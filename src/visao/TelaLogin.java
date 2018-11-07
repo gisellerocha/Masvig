@@ -5,6 +5,8 @@
  */
 package visao;
 
+import dao.Auth;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,7 +78,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 102, 0));
         jLabel3.setText("Senha.:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(300, 250, 80, 21);
+        jLabel3.setBounds(300, 250, 80, 24);
 
         jPasswordField2Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,21 +97,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1AcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1AcessarActionPerformed
-        // Botão de aceso - Tela login
-        if(jTextField1Usuario.getText().equals("admin")&& jPasswordField2Senha.getText().equals("123456")){
-        TelaPrincipal tela = new TelaPrincipal();
+        
+        Auth auth = new Auth(Integer.parseInt(jTextField1Usuario.getText()), jPasswordField2Senha.getText());
+        //System.out.println(auth.authSucesso());
+        
+        if(auth.authSucesso()){
+        TelaInicio tela = new TelaInicio();
         tela.setVisible(true); // verifica se o objeto tela existe
         dispose();   // serve pra fechar a tela de login apos a sua autenticação     
         }
         else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
         }
-            
     }//GEN-LAST:event_jButton1AcessarActionPerformed
-
-    private void jPasswordField2SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2SenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2SenhaActionPerformed
 
     private void jButton2SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2SairActionPerformed
         // Botão de Saída - Tela login
@@ -119,6 +119,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButton1AcessarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1AcessarKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1AcessarKeyPressed
+
+    private void jPasswordField2SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2SenhaActionPerformed
+
+    }//GEN-LAST:event_jPasswordField2SenhaActionPerformed
 
     /**
      * @param args the command line arguments
