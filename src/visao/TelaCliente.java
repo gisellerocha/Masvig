@@ -58,7 +58,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jButtonCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuInicio = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
@@ -248,6 +248,11 @@ public class TelaCliente extends javax.swing.JFrame {
         jButtonSalvar.setBounds(360, 360, 80, 23);
 
         jButtonCancel.setText("Limpar");
+        jButtonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelMouseClicked(evt);
+            }
+        });
         getContentPane().add(jButtonCancel);
         jButtonCancel.setBounds(470, 360, 90, 23);
 
@@ -263,13 +268,13 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        jMenuInicio.setText("Inicio");
+        jMenuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuInicioMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuInicio);
 
         jMenuSair.setText("Cadastros");
 
@@ -381,11 +386,6 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextCadActionPerformed
 
     private void jButtonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMouseClicked
-        /*  cnpj, razaoSocial, nome, endereço, complemento, municipio, estado, email, dataCadastro;
-    private int num, telefone, celular;
-    
-        */
-        
         String cnpj = cnpjFormattedCad.getText();
         String razao = razaoTextField.getText();
         String nome = nomeTextCad.getText();
@@ -409,7 +409,18 @@ public class TelaCliente extends javax.swing.JFrame {
         */
         
 
-        Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, Integer.parseInt(num), Integer.parseInt(tel), Integer.parseInt(cel));
+        Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, num, tel, cel);
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        cnpjFormattedCad.setText("");
+        razaoTextField.setText("");
+        nomeTextCad.setText("");
+        endTextCad.setText("");
+        complementoTextCad.setText("");
+        emailTextCad.setText("");
+        numTextCad.setText("");
+        telTextCad.setText("");
+        celTextCad.setText("");
+        
     }//GEN-LAST:event_jButtonSalvarMouseClicked
 
     private void nomeTextCadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeTextCadMouseClicked
@@ -439,11 +450,6 @@ public class TelaCliente extends javax.swing.JFrame {
     private void cnpjFormattedCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjFormattedCadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cnpjFormattedCadActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        new TelaInicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -498,6 +504,23 @@ public class TelaCliente extends javax.swing.JFrame {
     private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1MouseClicked
+
+    private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
+        cnpjFormattedCad.setText("");
+        razaoTextField.setText("");
+        nomeTextCad.setText("");
+        endTextCad.setText("");
+        complementoTextCad.setText("");
+        emailTextCad.setText("");
+        numTextCad.setText("");
+        telTextCad.setText("");
+        celTextCad.setText("");
+    }//GEN-LAST:event_jButtonCancelMouseClicked
+
+    private void jMenuInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuInicioMouseClicked
+        new TelaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuInicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -558,7 +581,6 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNum;
     private javax.swing.JLabel jLabelRazao;
     private javax.swing.JLabel jLabelTel;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuChamado;
@@ -570,6 +592,7 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuExConsulta;
     private javax.swing.JMenu jMenuExibir;
+    private javax.swing.JMenu jMenuInicio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;

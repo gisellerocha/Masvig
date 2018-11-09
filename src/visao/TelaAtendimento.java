@@ -5,6 +5,11 @@
  */
 package visao;
 
+import dao.Atendimento;
+import dao.AtendimentoDAO;
+import dao.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author XL
@@ -42,14 +47,18 @@ public class TelaAtendimento extends javax.swing.JFrame {
         respLabelAtend = new javax.swing.JLabel();
         respTextFieldAtend = new javax.swing.JTextField();
         grauLabelAtend = new javax.swing.JLabel();
-        grauSliderAtend = new javax.swing.JSlider();
         assuntoLabelAtend = new javax.swing.JLabel();
         assuntoTextFieldAtend = new javax.swing.JTextField();
         descriTextFieldAtend = new javax.swing.JTextField();
         saveButtonAtend = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuInicio = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
@@ -66,46 +75,51 @@ public class TelaAtendimento extends javax.swing.JFrame {
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         getContentPane().setLayout(null);
 
         idAtendimento.setText("id_atendimento");
         getContentPane().add(idAtendimento);
-        idAtendimento.setBounds(20, 20, 90, 20);
+        idAtendimento.setBounds(10, 10, 90, 20);
 
-        idAtendimentoTextField.setText("jTextField3");
         idAtendimentoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idAtendimentoTextFieldActionPerformed(evt);
             }
         });
         getContentPane().add(idAtendimentoTextField);
-        idAtendimentoTextField.setBounds(20, 40, 120, 30);
+        idAtendimentoTextField.setBounds(10, 30, 120, 30);
 
-        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CNPJ", "Razão social", "Item 3", "Item 4" }));
+        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Razão Social", "CNPJ" }));
+        tipoComboBox.setToolTipText("Selecione");
         getContentPane().add(tipoComboBox);
-        tipoComboBox.setBounds(166, 40, 80, 30);
+        tipoComboBox.setBounds(150, 30, 90, 30);
 
         clienteLabelAtend.setText("Cliente");
         getContentPane().add(clienteLabelAtend);
-        clienteLabelAtend.setBounds(260, 20, 55, 24);
+        clienteLabelAtend.setBounds(250, 10, 120, 24);
 
-        clienteTextFieldAtend.setText("jTextField1");
         clienteTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clienteTextFieldAtendActionPerformed(evt);
             }
         });
         getContentPane().add(clienteTextFieldAtend);
-        clienteTextFieldAtend.setBounds(260, 40, 180, 30);
+        clienteTextFieldAtend.setBounds(250, 30, 180, 30);
 
         lupaLabelAtend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
         lupaLabelAtend.setText("jLabel5");
+        lupaLabelAtend.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaLabelAtendMouseClicked(evt);
+            }
+        });
         getContentPane().add(lupaLabelAtend);
-        lupaLabelAtend.setBounds(450, 40, 30, 30);
+        lupaLabelAtend.setBounds(440, 30, 30, 30);
 
         userLabelAtend.setText("Usuário");
         getContentPane().add(userLabelAtend);
-        userLabelAtend.setBounds(530, 20, 70, 20);
+        userLabelAtend.setBounds(530, 10, 70, 20);
 
         funcionalTextFieldAtend.setText("Quem é o user");
         funcionalTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
@@ -114,45 +128,53 @@ public class TelaAtendimento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionalTextFieldAtend);
-        funcionalTextFieldAtend.setBounds(530, 40, 190, 30);
+        funcionalTextFieldAtend.setBounds(530, 30, 190, 30);
 
         telLabelAtend.setText("Telefone");
         getContentPane().add(telLabelAtend);
-        telLabelAtend.setBounds(20, 90, 80, 14);
+        telLabelAtend.setBounds(20, 140, 80, 14);
 
-        telTextFieldAtend.setText("jTextField5");
+        telTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telTextFieldAtendActionPerformed(evt);
+            }
+        });
         getContentPane().add(telTextFieldAtend);
-        telTextFieldAtend.setBounds(20, 110, 130, 30);
+        telTextFieldAtend.setBounds(20, 160, 130, 30);
 
         emailLabelAtend.setText("Email");
         getContentPane().add(emailLabelAtend);
-        emailLabelAtend.setBounds(170, 90, 24, 14);
-
-        emailTextFieldAtend.setText("jTextField6");
+        emailLabelAtend.setBounds(170, 140, 24, 14);
         getContentPane().add(emailTextFieldAtend);
-        emailTextFieldAtend.setBounds(170, 110, 180, 30);
+        emailTextFieldAtend.setBounds(170, 160, 180, 30);
 
         respLabelAtend.setText("Responsável");
         getContentPane().add(respLabelAtend);
-        respLabelAtend.setBounds(370, 90, 80, 14);
+        respLabelAtend.setBounds(370, 140, 80, 14);
 
-        respTextFieldAtend.setText("jTextField7");
+        respTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                respTextFieldAtendActionPerformed(evt);
+            }
+        });
         getContentPane().add(respTextFieldAtend);
-        respTextFieldAtend.setBounds(370, 110, 130, 30);
+        respTextFieldAtend.setBounds(370, 160, 130, 30);
 
         grauLabelAtend.setText("Grau de urgência");
         getContentPane().add(grauLabelAtend);
-        grauLabelAtend.setBounds(530, 90, 110, 20);
-        getContentPane().add(grauSliderAtend);
-        grauSliderAtend.setBounds(530, 110, 200, 26);
+        grauLabelAtend.setBounds(530, 80, 110, 20);
 
         assuntoLabelAtend.setText("Assunto");
         getContentPane().add(assuntoLabelAtend);
-        assuntoLabelAtend.setBounds(30, 184, 70, 20);
+        assuntoLabelAtend.setBounds(30, 210, 70, 20);
 
-        assuntoTextFieldAtend.setText("jTextField8");
+        assuntoTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assuntoTextFieldAtendActionPerformed(evt);
+            }
+        });
         getContentPane().add(assuntoTextFieldAtend);
-        assuntoTextFieldAtend.setBounds(30, 210, 410, 30);
+        assuntoTextFieldAtend.setBounds(30, 230, 410, 30);
 
         descriTextFieldAtend.setText("Descrição");
         descriTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
@@ -161,15 +183,53 @@ public class TelaAtendimento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(descriTextFieldAtend);
-        descriTextFieldAtend.setBounds(30, 250, 410, 160);
+        descriTextFieldAtend.setBounds(30, 270, 410, 160);
 
         saveButtonAtend.setText("Salvar");
+        saveButtonAtend.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveButtonAtendMouseClicked(evt);
+            }
+        });
         getContentPane().add(saveButtonAtend);
-        saveButtonAtend.setBounds(480, 370, 90, 23);
+        saveButtonAtend.setBounds(480, 390, 90, 23);
 
         jButton2.setText("Limpar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(620, 370, 80, 23);
+        jButton2.setBounds(620, 390, 80, 23);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(20, 100, 210, 30);
+
+        jLabel1.setText("Empresa");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 74, 140, 20);
+
+        jLabel2.setText("CNPJ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(250, 80, 25, 14);
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(250, 100, 190, 30);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Alta", "Atipica", "Baixa", "Media" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(530, 100, 160, 30);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,13 +238,8 @@ public class TelaAtendimento extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu1);
+        jMenuInicio.setText("Inicio");
+        jMenuBar1.add(jMenuInicio);
 
         jMenuSair.setText("Cadastros");
 
@@ -283,7 +338,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setSize(new java.awt.Dimension(807, 500));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -302,11 +357,6 @@ public class TelaAtendimento extends javax.swing.JFrame {
     private void idAtendimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idAtendimentoTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idAtendimentoTextFieldActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        new TelaInicio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -362,6 +412,62 @@ public class TelaAtendimento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1MouseClicked
 
+    private void saveButtonAtendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonAtendMouseClicked
+        String assunto = assuntoTextFieldAtend.getText();
+        String descriçao = descriTextFieldAtend.getText();
+        String email = emailTextFieldAtend.getText();
+        String responsavel = respTextFieldAtend.getText();
+        String telefone = telTextFieldAtend.getText();
+        
+        Atendimento novo = new Atendimento(assunto, descriçao, email, responsavel, telefone);
+        
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        assuntoTextFieldAtend.setText("");
+        descriTextFieldAtend.setText("");
+        emailTextFieldAtend.setText("");
+        respTextFieldAtend.setText("");
+        telTextFieldAtend.setText("");
+    }//GEN-LAST:event_saveButtonAtendMouseClicked
+
+    private void assuntoTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assuntoTextFieldAtendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assuntoTextFieldAtendActionPerformed
+
+    private void telTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telTextFieldAtendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telTextFieldAtendActionPerformed
+
+    private void respTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respTextFieldAtendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_respTextFieldAtendActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        assuntoTextFieldAtend.setText("");
+        descriTextFieldAtend.setText("");
+        emailTextFieldAtend.setText("");
+        respTextFieldAtend.setText("");
+        telTextFieldAtend.setText("");
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void lupaLabelAtendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaLabelAtendMouseClicked
+       if(tipoComboBox.getSelectedItem().equals("Razão Social")){
+        String busca = clienteTextFieldAtend.getText();
+        AtendimentoDAO atend = new AtendimentoDAO();
+        //atend.consultaRazao(busca);
+       }
+        
+        
+    }//GEN-LAST:event_lupaLabelAtendMouseClicked
+
+      
     /**
      * @param args the command line arguments
      */
@@ -407,11 +513,12 @@ public class TelaAtendimento extends javax.swing.JFrame {
     private javax.swing.JTextField emailTextFieldAtend;
     private javax.swing.JTextField funcionalTextFieldAtend;
     private javax.swing.JLabel grauLabelAtend;
-    private javax.swing.JSlider grauSliderAtend;
     private javax.swing.JLabel idAtendimento;
     private javax.swing.JTextField idAtendimentoTextField;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuChamado;
@@ -423,10 +530,13 @@ public class TelaAtendimento extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuExConsulta;
     private javax.swing.JMenu jMenuExibir;
+    private javax.swing.JMenu jMenuInicio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lupaLabelAtend;
     private javax.swing.JLabel respLabelAtend;
     private javax.swing.JTextField respTextFieldAtend;

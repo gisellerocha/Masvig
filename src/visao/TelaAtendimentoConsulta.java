@@ -52,6 +52,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         campoRadioButton = new javax.swing.JRadioButton();
         telefoneRadioButton = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        lupaLabelGerCon1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
@@ -87,11 +88,11 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
 
         tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CNPJ", "Razão social", "Item 3", "Item 4" }));
         getContentPane().add(tipoComboBox);
-        tipoComboBox.setBounds(166, 40, 80, 30);
+        tipoComboBox.setBounds(200, 40, 80, 30);
 
         clienteLabelGerCon.setText("Cliente");
         getContentPane().add(clienteLabelGerCon);
-        clienteLabelGerCon.setBounds(260, 20, 55, 24);
+        clienteLabelGerCon.setBounds(290, 20, 55, 24);
 
         clienteTextFieldGerCon.setText("jTextField1");
         clienteTextFieldGerCon.addActionListener(new java.awt.event.ActionListener() {
@@ -100,12 +101,12 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(clienteTextFieldGerCon);
-        clienteTextFieldGerCon.setBounds(260, 40, 180, 30);
+        clienteTextFieldGerCon.setBounds(290, 40, 180, 30);
 
         lupaLabelGerCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
         lupaLabelGerCon.setText("jLabel5");
         getContentPane().add(lupaLabelGerCon);
-        lupaLabelGerCon.setBounds(450, 40, 30, 30);
+        lupaLabelGerCon.setBounds(140, 40, 30, 30);
 
         userLabelGerCon.setText("Usuário");
         getContentPane().add(userLabelGerCon);
@@ -190,6 +191,11 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         jLabel1.setText("Chamado realizado em:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(560, 190, 120, 14);
+
+        lupaLabelGerCon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaLabelGerCon1.setText("jLabel5");
+        getContentPane().add(lupaLabelGerCon1);
+        lupaLabelGerCon1.setBounds(470, 40, 30, 30);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -451,6 +457,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;
     private javax.swing.JLabel lupaLabelGerCon;
+    private javax.swing.JLabel lupaLabelGerCon1;
     private javax.swing.JLabel respLabelGerCon;
     private javax.swing.JTextField respTextFieldGerCon;
     private javax.swing.JButton saveButtonGerCon;

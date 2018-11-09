@@ -408,7 +408,7 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         
         */
 
-        Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, Integer.parseInt(num), Integer.parseInt(tel), Integer.parseInt(cel));
+        Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, num, tel, cel);
     }//GEN-LAST:event_jButtonSalvarMouseClicked
 
     private void nomeTextCadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeTextCadMouseClicked

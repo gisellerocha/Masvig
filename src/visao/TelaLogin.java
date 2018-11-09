@@ -6,7 +6,9 @@
 package visao;
 
 import dao.Auth;
+import dao.ConexaoDAO;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
@@ -154,7 +156,33 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                
+                new Thread(){
+                    @Override
+                    public void run() {
+                        try 
+                        { 
+                            ConexaoDAO DAO =  new ConexaoDAO();
+                            Connection conn = DAO.getConexao();
+                        } catch (Exception ex){}
+                        
+                    }
+                    
+                }.start();
+                
+                new Thread(){
+                    @Override
+                    public void run() {
+                        try 
+                        { 
+                            new TelaLogin().setVisible(true);
+                        } catch (Exception ex){}
+                        
+                    }
+                    
+                }.start();
+
+                
             }
         });
     }

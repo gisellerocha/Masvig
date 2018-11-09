@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/dao/AtendimentoDAO.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/visao/TelaCliente.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/dao/Atendimento.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/visao/TelaAtendimentoConsulta.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/visao/TelaAtendimento.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/visao/TelaAtendimentoEditar.java</file>
+            <file>file:/G:/temp/MasvigSEMIOFICIAL/src/dao/AtendimentoDAO_1.java</file>
+        </group>
     </open-files>
 </project-private>

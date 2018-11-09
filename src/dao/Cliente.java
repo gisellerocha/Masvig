@@ -13,7 +13,7 @@ public class Cliente {
     private String cnpj, razaoSocial, nome, endereço, complemento, municipio, estado, email, dataCadastro;
     private int num, telefone, celular;
 
-    public Cliente(String cnpj, String razaoSocial, String nome, String endereço, String complemento, String municipio, String estado, String email, int num, int telefone, int celular) {
+    public Cliente(String cnpj, String razaoSocial, String nome, String endereço, String complemento, String municipio, String estado, String email, String num, String telefone, String celular) {
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
         this.nome = nome;
@@ -22,9 +22,9 @@ public class Cliente {
         this.municipio = municipio;
         this.estado = estado;
         this.email = email;
-        this.num = num;
-        this.telefone = telefone;
-        this.celular = celular;
+        this.num = Integer.parseInt(num);
+        this.telefone = Integer.parseInt(telefone);
+        this.celular = Integer.parseInt(celular);
         
         ClienteDAO novoCliente = new ClienteDAO(this);
     }
