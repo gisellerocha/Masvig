@@ -1,15 +1,11 @@
-drop database if exists helpdesk;
-create database helpdesk;
-use helpdesk;
-
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Nov-2018 às 02:22
--- Versão do servidor: 10.1.36-MariaDB
--- versão do PHP: 7.2.11
+-- Generation Time: 16-Nov-2018 às 21:52
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `atendimento` (
   `id_atendimento` int(11) NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
   `sla` varchar(10) DEFAULT NULL,
   `situacao_atendimento` varchar(20) DEFAULT NULL,
   `data_atendimento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -49,8 +46,12 @@ CREATE TABLE `atendimento` (
 -- Extraindo dados da tabela `atendimento`
 --
 
-INSERT INTO `atendimento` (`id_atendimento`, `sla`, `situacao_atendimento`, `data_atendimento`, `telefone`, `email`, `responsavel`, `assunto`, `descricao`, `id_problema`) VALUES
-(2, NULL, NULL, '2018-11-08 21:14:46', 44, 'sasda', 'asdsda', 'ssa', 'sdasda', NULL);
+INSERT INTO `atendimento` (`id_atendimento`, `cnpj`, `sla`, `situacao_atendimento`, `data_atendimento`, `telefone`, `email`, `responsavel`, `assunto`, `descricao`, `id_problema`) VALUES
+(17, '00.000.000/0000-00', NULL, NULL, '2018-11-16 15:54:31', 40028922, 'guilherme@gmail.com', 'Guilherme', 'Teste', 'Descrição teste', NULL),
+(18, '00.000.000/0000-00', NULL, NULL, '2018-11-16 20:13:22', 40023333, 'guilherme@gmail.com', 'Teste', 'Teste', 'Teste teste Testando', NULL),
+(19, '00.000.000/0000-00', NULL, NULL, '2018-11-16 20:47:56', 33131869, 'guilherme@gmail.com', 'Teste', 'Teste', 'Teste teste Testando', NULL),
+(20, '00.000.000/0000-00', NULL, NULL, '2018-11-16 17:05:03', 40028922, 'guilherme@gmail.com', 'Teste', 'Teste', 'Teste teste Testando', NULL),
+(21, '00.000.000/0000-00', NULL, NULL, '2018-11-16 18:09:40', 40028933, 'g@g.com', 'gg', 'ggg', 'gggg', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,10 +79,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`cnpj`, `razao_social`, `nome`, `endereço`, `complemento`, `num`, `municipio`, `estado`, `email`, `dataCadastro`, `telefone`, `celular`) VALUES
-('12.345.678/0001-23', 'Que Isso Fera', 'Tatiana', 'Rua das Palmeiras', 'Bloco B', '121', 'SP', 'São Paulo', 'queissofera@gmail.com', '2018-11-08 22:13:44', 13133, 1212),
-('23.489.082/0001-90', 'May do Ceu', 'Mayra', 'Rua da facul', 'efke', '67', 'SP', 'São Paulo', 'aijfbn', '2018-11-08 23:18:56', 23, 33),
-('65.839.271/0001-89', 'Ateu Cubanos', 'Rodrigo', 'Rua dos Cubanos', 'Bloco D', '420', 'SP', 'São Paulo', 'cubateu@gmail.com', '2018-11-08 22:16:18', 9535, 2039835),
-('95.382.735/8972-89', 'Juao', 'João Pinto', 'Rua do Ju', 'kd', '1', 'SP', 'São Paulo', 'fans', '2018-11-08 23:45:17', 40028922, 40028922);
+('00.000.000/0000-00', 'Guilherme INC', 'Guilherme Mendes', 'Rua Canindé', '', '131', 'SP', 'São Paulo', 'guilherme@gmail.com', '2018-11-16 15:45:16', 40028922, 40028922);
 
 -- --------------------------------------------------------
 
@@ -161,7 +159,8 @@ INSERT INTO `usuario` (`funcional`, `nome`, `logradouro`, `complemento`, `munici
 --
 ALTER TABLE `atendimento`
   ADD PRIMARY KEY (`id_atendimento`),
-  ADD KEY `fk_atendimento_problema` (`id_problema`);
+  ADD KEY `fk_atendimento_problema` (`id_problema`),
+  ADD KEY `cnpj` (`cnpj`);
 
 --
 -- Indexes for table `cliente`
@@ -198,7 +197,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `atendimento`
 --
 ALTER TABLE `atendimento`
-  MODIFY `id_atendimento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_atendimento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `historico`
@@ -226,6 +225,7 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `atendimento`
 --
 ALTER TABLE `atendimento`
+  ADD CONSTRAINT `atendimento_ibfk_1` FOREIGN KEY (`cnpj`) REFERENCES `cliente` (`cnpj`),
   ADD CONSTRAINT `fk_atendimento_problema` FOREIGN KEY (`id_problema`) REFERENCES `problema` (`id_problema`);
 
 --
