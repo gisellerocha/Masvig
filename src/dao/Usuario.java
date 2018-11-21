@@ -12,11 +12,12 @@ import java.sql.Date;
  * @author XL
  */
 public class Usuario {
+    private Usuario buscaUsuario;
     private String nome, endereço, complemento, municipio, estado, sexo, email, cpf, rg,  dataNasc, orgao, exp, cargo, senha;
-    private int telefone, celular, num;
+    private int telefone, celular, num, funcional;
 
     public Usuario(String nome, String endereço, String complemento, String municipio, String estado, String sexo, String email, 
-            String cpf, String rg, String dataNasc, String orgao, String exp, String cargo, String senha, String telefone, String celular, String num) {
+            String cpf, String rg, String dataNasc, String orgao, String exp, String cargo, String senha, String telefone, String celular, String num/*String funcional*/) {
         this.nome = nome;
         this.endereço = endereço;
         this.complemento = complemento;
@@ -34,12 +35,15 @@ public class Usuario {
         this.telefone = Integer.parseInt(telefone);
         this.celular = Integer.parseInt(celular);
         this.num = Integer.parseInt(num);
+       //this.funcional = Integer.parseInt(funcional);
         //this.funcional = Integer.parseInt(funcional);
                 
+      
+    }
+    public void insereUsuario(){
        UsuarioDAO insereNovo = new UsuarioDAO();
        insereNovo.inserir(this);
     }
-
     public String getNome() {
         return nome;
     }
@@ -174,5 +178,23 @@ public class Usuario {
     public void setNum(int num) {
         this.num = num;
     }
+
+    public int getFuncional() {
+        return funcional;
+    }
+
+    public void setFuncional(int funcional) {
+        this.funcional = funcional;
+    }
     
+    public Usuario buscaUsuario(){
+        UsuarioDAO buscando = new UsuarioDAO();
+        Usuario minhaBusca = buscando.consultaDadosUsuario(this);
+        return minhaBusca;
+    }
+    public Usuario attUsuario(){  
+       UsuarioDAO atualizaUsu = new UsuarioDAO();
+       return atualizaUsu.atualizarUsuario(this);
+       
+    }
 }

@@ -5,12 +5,28 @@
  */
 package dao;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author XL
  */
 public class Cliente {
-    private String cnpj, razaoSocial, nome, endereço, complemento, municipio, estado, email, dataCadastro;
+    
+    public ArrayList<String> listaCnpj = new ArrayList<String>();
+    public ArrayList<String> listaRazaoSocial = new ArrayList<String>();
+    public ArrayList<String> listaNome = new ArrayList<String>();
+    public ArrayList<String> listaEndereço = new ArrayList<String>();
+    public ArrayList<String> listaComplemento = new ArrayList<String>();
+    public ArrayList<String> listaMunicipio = new ArrayList<String>();
+    public ArrayList<String> listaEstado = new ArrayList<String>();
+    public ArrayList<String> listaEmail = new ArrayList<String>();
+    public ArrayList<String> listaTelefone = new ArrayList<String>();
+    public ArrayList<String> listaNum = new ArrayList<String>();
+    
+    private Cliente buscaCliente;
+    private String cnpj, razaoSocial, nome, endereço, complemento, municipio, estado, email, dataCadastro, cnpjEditar;
+    
     private int num, telefone, celular;
 
     public Cliente(String cnpj, String razaoSocial, String nome, String endereço, String complemento, String municipio, String estado, String email, String num, String telefone, String celular) {
@@ -25,8 +41,19 @@ public class Cliente {
         this.num = Integer.parseInt(num);
         this.telefone = Integer.parseInt(telefone);
         this.celular = Integer.parseInt(celular);
-        
-        ClienteDAO novoCliente = new ClienteDAO(this);
+    }
+    
+    public String getCnpjEditar() {
+        return cnpjEditar;
+    }
+
+    public void setCnpjEditar(String cnpjEditar) {
+        this.cnpjEditar = cnpjEditar;
+    }
+    
+    public void insereCliente(){
+       ClienteDAO novoCliente = new ClienteDAO();
+       novoCliente.inserirCliente(this);
     }
 
     public String getCnpj() {
@@ -124,8 +151,32 @@ public class Cliente {
     public void setCelular(int celular) {
         this.celular = celular;
     }
-
+     public String getBuscaCnpj(){
+        ClienteDAO buscando = new ClienteDAO();
+        String id_cnpj = buscando.consultaCnpjCliente(this);
+        return id_cnpj;
+    }
+    public Cliente getCliente(String cnpj){
+        ClienteDAO pegaCliente = new ClienteDAO();
+        this.buscaCliente = pegaCliente.consultaCliente(cnpj);
+        return this.buscaCliente;
+    }
+    public boolean attCliente(){  
+        try{
+            ClienteDAO atualizaCli = new ClienteDAO();
+            return atualizaCli.atualizarCliente(this);
+        } catch(Exception e){
+            return false;
+        }
+    }
     
-
+    public Cliente listarOsClientes(Cliente cliente, int num){
+        /*
+            public Cliente todosOsClientes(Cliente cliente, int todosOuUm){
+            int todosOuUm = 1, ele busca por cnpj se = a 2 ele busca por razão e 3 ele busca por nome
+        */
+        ClienteDAO listarCliente = new ClienteDAO();
+        return listarCliente.todosOsClientes(cliente, num);
+    }
 }
    
