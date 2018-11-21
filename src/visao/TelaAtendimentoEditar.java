@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package visao;
+import dao.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author XL
  */
 public class TelaAtendimentoEditar extends javax.swing.JFrame {
-
+    
+    private int id_atendimento;                                             
+    private Atendimento buscaAtendimento;
     /**
      * Creates new form TelaAtendimento
      */
@@ -29,167 +33,218 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
 
         idAtendimento = new javax.swing.JLabel();
         idAtendimentoTextField = new javax.swing.JTextField();
-        tipoComboBox = new javax.swing.JComboBox<>();
-        clienteLabelAtend = new javax.swing.JLabel();
-        clienteTextFieldAtend = new javax.swing.JTextField();
-        lupaLabelAtend = new javax.swing.JLabel();
-        userLabelAtend = new javax.swing.JLabel();
-        funcionalTextFieldAtend = new javax.swing.JTextField();
-        telLabelAtend = new javax.swing.JLabel();
-        telTextFieldAtend = new javax.swing.JTextField();
-        emailLabelAtend = new javax.swing.JLabel();
-        emailTextFieldAtend = new javax.swing.JTextField();
-        respLabelAtend = new javax.swing.JLabel();
-        respTextFieldAtend = new javax.swing.JTextField();
-        grauLabelAtend = new javax.swing.JLabel();
-        grauSliderAtend = new javax.swing.JSlider();
-        assuntoLabelAtend = new javax.swing.JLabel();
-        assuntoTextFieldAtend = new javax.swing.JTextField();
-        descriTextFieldAtend = new javax.swing.JTextField();
-        saveButtonAtend = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
+        clienteLabelGerCon = new javax.swing.JLabel();
+        clienteTextFieldGerCon = new javax.swing.JTextField();
+        lupaLabelGerCon = new javax.swing.JLabel();
+        userLabelGerCon = new javax.swing.JLabel();
+        funcionalTextFieldGerCon = new javax.swing.JTextField();
+        telLabelGerCon = new javax.swing.JLabel();
+        telTextFieldGerCon = new javax.swing.JTextField();
+        emailLabelGerCon = new javax.swing.JLabel();
+        emailTextFieldGerCon = new javax.swing.JTextField();
+        respLabelGerCon = new javax.swing.JLabel();
+        respTextFieldGerCon = new javax.swing.JTextField();
+        assuntoLabelGerCon = new javax.swing.JLabel();
+        assuntoTextFieldGerCon = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descriTextFieldGerCon = new javax.swing.JTextArea();
+        assuntoLabelGerCon1 = new javax.swing.JLabel();
+        saveButtonGerCon = new javax.swing.JButton();
+        jButtonGerCon = new javax.swing.JButton();
+        editarTel = new javax.swing.JLabel();
+        editarCnpj = new javax.swing.JLabel();
+        editarReponsavel = new javax.swing.JLabel();
+        editarEmail = new javax.swing.JLabel();
+        editarAssunto = new javax.swing.JLabel();
+        editarDescricao = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
-        jMenuChamado = new javax.swing.JMenuItem();
+        jMenuAtendimento = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
-        jMenuEdChamado = new javax.swing.JMenuItem();
+        jMenuEdAtendimento = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
-        jMenuExConsulta = new javax.swing.JMenuItem();
+        jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuConsultaCliente = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Editar chamado");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
-        idAtendimento.setText("id_atendimento");
+        idAtendimento.setText("Id do atendimento");
         getContentPane().add(idAtendimento);
-        idAtendimento.setBounds(20, 20, 90, 20);
+        idAtendimento.setBounds(40, 20, 90, 20);
 
-        idAtendimentoTextField.setText("jTextField3");
         idAtendimentoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idAtendimentoTextFieldActionPerformed(evt);
             }
         });
         getContentPane().add(idAtendimentoTextField);
-        idAtendimentoTextField.setBounds(20, 40, 120, 30);
+        idAtendimentoTextField.setBounds(40, 40, 120, 30);
 
-        tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CNPJ", "Razão social", "Item 3", "Item 4" }));
-        getContentPane().add(tipoComboBox);
-        tipoComboBox.setBounds(166, 40, 80, 30);
+        clienteLabelGerCon.setText("CNPJ Cliente");
+        getContentPane().add(clienteLabelGerCon);
+        clienteLabelGerCon.setBounds(210, 20, 90, 24);
 
-        clienteLabelAtend.setText("Cliente");
-        getContentPane().add(clienteLabelAtend);
-        clienteLabelAtend.setBounds(260, 20, 55, 24);
-
-        clienteTextFieldAtend.setText("jTextField1");
-        clienteTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
+        clienteTextFieldGerCon.setEditable(false);
+        clienteTextFieldGerCon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteTextFieldAtendActionPerformed(evt);
+                clienteTextFieldGerConActionPerformed(evt);
             }
         });
-        getContentPane().add(clienteTextFieldAtend);
-        clienteTextFieldAtend.setBounds(260, 40, 180, 30);
+        getContentPane().add(clienteTextFieldGerCon);
+        clienteTextFieldGerCon.setBounds(210, 40, 280, 30);
 
-        lupaLabelAtend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
-        lupaLabelAtend.setText("jLabel5");
-        getContentPane().add(lupaLabelAtend);
-        lupaLabelAtend.setBounds(450, 40, 30, 30);
-
-        userLabelAtend.setText("Usuário");
-        getContentPane().add(userLabelAtend);
-        userLabelAtend.setBounds(530, 20, 70, 20);
-
-        funcionalTextFieldAtend.setText("Quem é o user");
-        funcionalTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funcionalTextFieldAtendActionPerformed(evt);
+        lupaLabelGerCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaLabelGerCon.setText("jLabel5");
+        lupaLabelGerCon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaLabelGerConMouseClicked(evt);
             }
         });
-        getContentPane().add(funcionalTextFieldAtend);
-        funcionalTextFieldAtend.setBounds(530, 40, 190, 30);
+        getContentPane().add(lupaLabelGerCon);
+        lupaLabelGerCon.setBounds(160, 40, 30, 30);
 
-        telLabelAtend.setText("Telefone");
-        getContentPane().add(telLabelAtend);
-        telLabelAtend.setBounds(20, 90, 80, 14);
+        userLabelGerCon.setText("Usuário");
+        getContentPane().add(userLabelGerCon);
+        userLabelGerCon.setBounds(540, 20, 70, 20);
 
-        telTextFieldAtend.setText("jTextField5");
-        getContentPane().add(telTextFieldAtend);
-        telTextFieldAtend.setBounds(20, 110, 130, 30);
-
-        emailLabelAtend.setText("Email");
-        getContentPane().add(emailLabelAtend);
-        emailLabelAtend.setBounds(170, 90, 24, 14);
-
-        emailTextFieldAtend.setText("jTextField6");
-        getContentPane().add(emailTextFieldAtend);
-        emailTextFieldAtend.setBounds(170, 110, 180, 30);
-
-        respLabelAtend.setText("Responsável");
-        getContentPane().add(respLabelAtend);
-        respLabelAtend.setBounds(370, 90, 80, 14);
-
-        respTextFieldAtend.setText("jTextField7");
-        getContentPane().add(respTextFieldAtend);
-        respTextFieldAtend.setBounds(370, 110, 130, 30);
-
-        grauLabelAtend.setText("Grau de urgência");
-        getContentPane().add(grauLabelAtend);
-        grauLabelAtend.setBounds(530, 90, 110, 20);
-        getContentPane().add(grauSliderAtend);
-        grauSliderAtend.setBounds(530, 110, 200, 26);
-
-        assuntoLabelAtend.setText("Assunto");
-        getContentPane().add(assuntoLabelAtend);
-        assuntoLabelAtend.setBounds(30, 184, 70, 20);
-
-        assuntoTextFieldAtend.setText("jTextField8");
-        getContentPane().add(assuntoTextFieldAtend);
-        assuntoTextFieldAtend.setBounds(30, 210, 410, 30);
-
-        descriTextFieldAtend.setText("Descrição");
-        descriTextFieldAtend.addActionListener(new java.awt.event.ActionListener() {
+        funcionalTextFieldGerCon.setEditable(false);
+        funcionalTextFieldGerCon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descriTextFieldAtendActionPerformed(evt);
+                funcionalTextFieldGerConActionPerformed(evt);
             }
         });
-        getContentPane().add(descriTextFieldAtend);
-        descriTextFieldAtend.setBounds(30, 250, 410, 160);
+        getContentPane().add(funcionalTextFieldGerCon);
+        funcionalTextFieldGerCon.setBounds(540, 40, 190, 30);
 
-        saveButtonAtend.setText("Salvar");
-        getContentPane().add(saveButtonAtend);
-        saveButtonAtend.setBounds(480, 350, 90, 23);
+        telLabelGerCon.setText("Telefone");
+        getContentPane().add(telLabelGerCon);
+        telLabelGerCon.setBounds(40, 90, 80, 14);
 
-        jButton2.setText("Limpar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(620, 350, 80, 23);
+        telTextFieldGerCon.setEditable(false);
+        getContentPane().add(telTextFieldGerCon);
+        telTextFieldGerCon.setBounds(40, 110, 130, 30);
 
-        jRadioButton1.setText("Web");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(550, 220, 47, 30);
+        emailLabelGerCon.setText("Email");
+        getContentPane().add(emailLabelGerCon);
+        emailLabelGerCon.setBounds(210, 90, 200, 14);
 
-        jRadioButton2.setText("Campo");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(550, 250, 59, 30);
+        emailTextFieldGerCon.setEditable(false);
+        getContentPane().add(emailTextFieldGerCon);
+        emailTextFieldGerCon.setBounds(210, 110, 280, 30);
 
-        jRadioButton3.setText("Telefone");
-        getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(550, 280, 67, 30);
+        respLabelGerCon.setText("Responsável");
+        getContentPane().add(respLabelGerCon);
+        respLabelGerCon.setBounds(540, 90, 80, 14);
 
-        jLabel1.setText("Chamado realizado em:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(550, 190, 130, 30);
+        respTextFieldGerCon.setEditable(false);
+        getContentPane().add(respTextFieldGerCon);
+        respTextFieldGerCon.setBounds(540, 110, 150, 30);
+
+        assuntoLabelGerCon.setText("Descrição");
+        getContentPane().add(assuntoLabelGerCon);
+        assuntoLabelGerCon.setBounds(40, 250, 70, 20);
+
+        assuntoTextFieldGerCon.setEditable(false);
+        getContentPane().add(assuntoTextFieldGerCon);
+        assuntoTextFieldGerCon.setBounds(40, 210, 400, 30);
+
+        descriTextFieldGerCon.setEditable(false);
+        descriTextFieldGerCon.setColumns(20);
+        descriTextFieldGerCon.setRows(5);
+        jScrollPane1.setViewportView(descriTextFieldGerCon);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 270, 400, 140);
+
+        assuntoLabelGerCon1.setText("Assunto");
+        getContentPane().add(assuntoLabelGerCon1);
+        assuntoLabelGerCon1.setBounds(40, 180, 70, 20);
+
+        saveButtonGerCon.setText("Atualizar");
+        saveButtonGerCon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveButtonGerConMouseClicked(evt);
+            }
+        });
+        getContentPane().add(saveButtonGerCon);
+        saveButtonGerCon.setBounds(520, 210, 80, 23);
+
+        jButtonGerCon.setText("Cancelar");
+        jButtonGerCon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGerConMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButtonGerCon);
+        jButtonGerCon.setBounds(610, 210, 80, 23);
+
+        editarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarTel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarTelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarTel);
+        editarTel.setBounds(170, 110, 30, 30);
+
+        editarCnpj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarCnpj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarCnpjMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarCnpj);
+        editarCnpj.setBounds(490, 40, 30, 30);
+
+        editarReponsavel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarReponsavel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarReponsavelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarReponsavel);
+        editarReponsavel.setBounds(690, 110, 30, 30);
+
+        editarEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarEmailMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarEmail);
+        editarEmail.setBounds(490, 110, 30, 30);
+
+        editarAssunto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarAssunto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarAssuntoMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarAssunto);
+        editarAssunto.setBounds(440, 210, 30, 30);
+
+        editarDescricao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/editarIcon.png"))); // NOI18N
+        editarDescricao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarDescricaoMouseClicked(evt);
+            }
+        });
+        getContentPane().add(editarDescricao);
+        editarDescricao.setBounds(440, 270, 30, 30);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,13 +279,13 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuUsuario);
 
-        jMenuChamado.setText("Chamado");
-        jMenuChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuAtendimento.setText("Atendimento");
+        jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuChamadoActionPerformed(evt);
+                jMenuAtendimentoActionPerformed(evt);
             }
         });
-        jMenuSair.add(jMenuChamado);
+        jMenuSair.add(jMenuAtendimento);
 
         jMenuBar1.add(jMenuSair);
 
@@ -252,13 +307,13 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdUsuario);
 
-        jMenuEdChamado.setText("Chamado");
-        jMenuEdChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEdAtendimento.setText("Atendimento");
+        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdChamadoActionPerformed(evt);
+                jMenuEdAtendimentoActionPerformed(evt);
             }
         });
-        jMenuEditar.add(jMenuEdChamado);
+        jMenuEditar.add(jMenuEdAtendimento);
 
         jMenuBar1.add(jMenuEditar);
 
@@ -272,13 +327,13 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuRelatorio);
 
-        jMenuExConsulta.setText("Consulta atendimento");
-        jMenuExConsulta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuExConsultaAtendimento.setText("Consulta atendimento");
+        jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuExConsultaActionPerformed(evt);
+                jMenuExConsultaAtendimentoActionPerformed(evt);
             }
         });
-        jMenuExibir.add(jMenuExConsulta);
+        jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
         jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
@@ -288,8 +343,13 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaFuncional);
 
-        jMenuItem1.setText("Consulta cliente");
-        jMenuExibir.add(jMenuItem1);
+        jMenuConsultaCliente.setText("Consulta cliente");
+        jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaCliente);
 
         jMenuBar1.add(jMenuExibir);
 
@@ -307,21 +367,114 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void funcionalTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionalTextFieldAtendActionPerformed
+    private void funcionalTextFieldGerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionalTextFieldGerConActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_funcionalTextFieldAtendActionPerformed
+    }//GEN-LAST:event_funcionalTextFieldGerConActionPerformed
 
-    private void clienteTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteTextFieldAtendActionPerformed
+    private void clienteTextFieldGerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteTextFieldGerConActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_clienteTextFieldAtendActionPerformed
-
-    private void descriTextFieldAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriTextFieldAtendActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descriTextFieldAtendActionPerformed
+    }//GEN-LAST:event_clienteTextFieldGerConActionPerformed
 
     private void idAtendimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idAtendimentoTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idAtendimentoTextFieldActionPerformed
+
+    private void saveButtonGerConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonGerConMouseClicked
+            
+        int erro = 0;
+        
+        String assunto = assuntoTextFieldGerCon.getText();
+        String descricao = descriTextFieldGerCon.getText();
+        String email = emailTextFieldGerCon.getText();
+        String responsavel = respTextFieldGerCon.getText();
+        String telefone = telTextFieldGerCon.getText(); 
+        String cnpj = clienteTextFieldGerCon.getText();  
+        try{
+            int telefoneInteger = Integer.parseInt(telefone);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "ERRO, o telefone possui letras!");
+            erro++;
+        }   
+        if(telefone.length() > 8){
+            JOptionPane.showMessageDialog(null, "ERRO, o telefone excede o limite de caracteres");
+            erro++;
+        }
+        if(erro == 0){
+            Atendimento atualizar = new Atendimento(assunto, descricao, email, responsavel, telefone, cnpj);
+            atualizar.setId_atendimento(this.id_atendimento);
+            if(atualizar.atualizarAtendimento() == true){
+                JOptionPane.showMessageDialog(null, "Sucesso ao atualizar o atendimento");
+                idAtendimentoTextField.setText(atualizar.getIdAtendimento());
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao tentar atualizar o atendimento");
+                idAtendimentoTextField.setText("ERRO!");
+            }
+        }
+    }//GEN-LAST:event_saveButtonGerConMouseClicked
+
+    private void lupaLabelGerConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaLabelGerConMouseClicked
+        if(idAtendimentoTextField.getText().length() > 0){
+            String idAtendimento = idAtendimentoTextField.getText();
+            int erro = 0;
+            try{
+                this.id_atendimento = Integer.parseInt(idAtendimento);
+            } catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "ERRO, o id_atendimento possui letras!");
+                erro++;
+            }
+            if(erro == 0){
+                Atendimento buscar = new Atendimento(null, null, null, null, "0", null);
+                this.buscaAtendimento = buscar.getAtendimento(this.id_atendimento);
+                if(this.buscaAtendimento == null){
+                    JOptionPane.showMessageDialog(null, "Atendimento não encontrado!");
+                } else {
+                    String telefone = String.valueOf(this.buscaAtendimento.getTelefone());
+                    descriTextFieldGerCon.setText(this.buscaAtendimento.getDescricao());
+                    emailTextFieldGerCon.setText(this.buscaAtendimento.getEmail());
+                    respTextFieldGerCon.setText(this.buscaAtendimento.getResponsavel());
+                    telTextFieldGerCon.setText(telefone);
+                    assuntoTextFieldGerCon.setText(this.buscaAtendimento.getAssunto());
+                    clienteTextFieldGerCon.setText(this.buscaAtendimento.getCnpj());
+                    this.id_atendimento = this.buscaAtendimento.getId_atendimento();
+                }
+            }
+        }
+    }//GEN-LAST:event_lupaLabelGerConMouseClicked
+
+    private void jButtonGerConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGerConMouseClicked
+        this.dispose();
+        new TelaAtendimentoEditar().setVisible(true);
+    }//GEN-LAST:event_jButtonGerConMouseClicked
+
+    private void editarCnpjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCnpjMouseClicked
+        clienteTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarCnpjMouseClicked
+
+    private void editarTelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarTelMouseClicked
+        telTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarTelMouseClicked
+
+    private void editarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEmailMouseClicked
+        emailTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarEmailMouseClicked
+
+    private void editarReponsavelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarReponsavelMouseClicked
+        respTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarReponsavelMouseClicked
+
+    private void editarAssuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarAssuntoMouseClicked
+        assuntoTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarAssuntoMouseClicked
+
+    private void editarDescricaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescricaoMouseClicked
+        descriTextFieldGerCon.setEditable(true);
+        JOptionPane.showMessageDialog(null, "Você pode editar agora!", "Editar", 1);
+    }//GEN-LAST:event_editarDescricaoMouseClicked
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         new TelaInicio().setVisible(true);
@@ -338,10 +491,10 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuUsuarioActionPerformed
 
-    private void jMenuChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChamadoActionPerformed
+    private void jMenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtendimentoActionPerformed
         new TelaAtendimento().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuChamadoActionPerformed
+    }//GEN-LAST:event_jMenuAtendimentoActionPerformed
 
     private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
         new TelaEditaCliente().setVisible(true);
@@ -353,25 +506,29 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
 
-    private void jMenuEdChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdChamadoActionPerformed
+    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
         new TelaAtendimentoEditar().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuEdChamadoActionPerformed
+    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
 
     private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
         new TelaGerenteRelatorio().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuRelatorioActionPerformed
 
-    private void jMenuExConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaActionPerformed
+    private void jMenuExConsultaAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoActionPerformed
         new TelaAtendimentoConsulta().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuExConsultaActionPerformed
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
 
     private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
         new Consultar().setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
+
+    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+        new TelaConsultaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
 
     private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
         // Botão Sair - tela principal
@@ -409,6 +566,12 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -419,46 +582,47 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel assuntoLabelAtend;
-    private javax.swing.JTextField assuntoTextFieldAtend;
-    private javax.swing.JLabel clienteLabelAtend;
-    private javax.swing.JTextField clienteTextFieldAtend;
-    private javax.swing.JTextField descriTextFieldAtend;
-    private javax.swing.JLabel emailLabelAtend;
-    private javax.swing.JTextField emailTextFieldAtend;
-    private javax.swing.JTextField funcionalTextFieldAtend;
-    private javax.swing.JLabel grauLabelAtend;
-    private javax.swing.JSlider grauSliderAtend;
+    private javax.swing.JLabel assuntoLabelGerCon;
+    private javax.swing.JLabel assuntoLabelGerCon1;
+    private javax.swing.JTextField assuntoTextFieldGerCon;
+    private javax.swing.JLabel clienteLabelGerCon;
+    private javax.swing.JTextField clienteTextFieldGerCon;
+    private javax.swing.JTextArea descriTextFieldGerCon;
+    private javax.swing.JLabel editarAssunto;
+    private javax.swing.JLabel editarCnpj;
+    private javax.swing.JLabel editarDescricao;
+    private javax.swing.JLabel editarEmail;
+    private javax.swing.JLabel editarReponsavel;
+    private javax.swing.JLabel editarTel;
+    private javax.swing.JLabel emailLabelGerCon;
+    private javax.swing.JTextField emailTextFieldGerCon;
+    private javax.swing.JTextField funcionalTextFieldGerCon;
     private javax.swing.JLabel idAtendimento;
     private javax.swing.JTextField idAtendimentoTextField;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonGerCon;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
+    private javax.swing.JMenuItem jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuChamado;
     private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
-    private javax.swing.JMenuItem jMenuEdChamado;
+    private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuExConsulta;
+    private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JLabel lupaLabelAtend;
-    private javax.swing.JLabel respLabelAtend;
-    private javax.swing.JTextField respTextFieldAtend;
-    private javax.swing.JButton saveButtonAtend;
-    private javax.swing.JLabel telLabelAtend;
-    private javax.swing.JTextField telTextFieldAtend;
-    private javax.swing.JComboBox<String> tipoComboBox;
-    private javax.swing.JLabel userLabelAtend;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lupaLabelGerCon;
+    private javax.swing.JLabel respLabelGerCon;
+    private javax.swing.JTextField respTextFieldGerCon;
+    private javax.swing.JButton saveButtonGerCon;
+    private javax.swing.JLabel telLabelGerCon;
+    private javax.swing.JTextField telTextFieldGerCon;
+    private javax.swing.JLabel userLabelGerCon;
     // End of variables declaration//GEN-END:variables
 }

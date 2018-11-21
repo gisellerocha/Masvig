@@ -58,24 +58,28 @@ public class TelaCliente extends javax.swing.JFrame {
         jButtonCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuInicio = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
-        jMenuChamado = new javax.swing.JMenuItem();
+        jMenuAtendimento = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
-        jMenuEdChamado = new javax.swing.JMenuItem();
+        jMenuEdAtendimento = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
-        jMenuExConsulta = new javax.swing.JMenuItem();
+        jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuConsultaCliente = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TelaCliente");
+        setMaximumSize(new java.awt.Dimension(920, 490));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(null);
 
         jLabelNome.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
@@ -83,7 +87,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jLabelNome.setText("Nome");
         jLabelNome.setToolTipText("");
         getContentPane().add(jLabelNome);
-        jLabelNome.setBounds(40, 110, 50, 30);
+        jLabelNome.setBounds(20, 130, 50, 30);
 
         nomeTextCad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,32 +100,32 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nomeTextCad);
-        nomeTextCad.setBounds(40, 140, 250, 30);
+        nomeTextCad.setBounds(20, 160, 250, 30);
 
         jLabelTel.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelTel.setForeground(new java.awt.Color(51, 102, 0));
         jLabelTel.setText("Tel");
         jLabelTel.setToolTipText("");
         getContentPane().add(jLabelTel);
-        jLabelTel.setBounds(310, 250, 50, 30);
+        jLabelTel.setBounds(290, 270, 50, 30);
         getContentPane().add(telTextCad);
-        telTextCad.setBounds(310, 280, 240, 30);
+        telTextCad.setBounds(290, 300, 240, 30);
 
         jLabelCel.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelCel.setForeground(new java.awt.Color(51, 102, 0));
         jLabelCel.setText("Cel");
         jLabelCel.setToolTipText("");
         getContentPane().add(jLabelCel);
-        jLabelCel.setBounds(570, 250, 50, 30);
+        jLabelCel.setBounds(570, 270, 50, 30);
         getContentPane().add(celTextCad);
-        celTextCad.setBounds(570, 280, 210, 30);
+        celTextCad.setBounds(550, 300, 210, 30);
 
         jLabelEnd.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEnd.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEnd.setText("Logradouro");
         jLabelEnd.setToolTipText("");
         getContentPane().add(jLabelEnd);
-        jLabelEnd.setBounds(40, 180, 90, 40);
+        jLabelEnd.setBounds(20, 200, 90, 40);
 
         endTextCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,14 +133,14 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(endTextCad);
-        endTextCad.setBounds(40, 210, 250, 30);
+        endTextCad.setBounds(20, 230, 250, 30);
 
         jLabelNum.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelNum.setForeground(new java.awt.Color(51, 102, 0));
         jLabelNum.setText("Num");
         jLabelNum.setToolTipText("");
         getContentPane().add(jLabelNum);
-        jLabelNum.setBounds(310, 180, 40, 40);
+        jLabelNum.setBounds(290, 200, 40, 40);
 
         numTextCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,23 +148,23 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(numTextCad);
-        numTextCad.setBounds(310, 210, 80, 30);
+        numTextCad.setBounds(290, 230, 80, 30);
 
         jLabelComplemento.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelComplemento.setForeground(new java.awt.Color(51, 102, 0));
         jLabelComplemento.setText("Complemento");
         jLabelComplemento.setToolTipText("");
         getContentPane().add(jLabelComplemento);
-        jLabelComplemento.setBounds(410, 180, 130, 40);
+        jLabelComplemento.setBounds(390, 200, 130, 40);
         getContentPane().add(complementoTextCad);
-        complementoTextCad.setBounds(410, 210, 190, 30);
+        complementoTextCad.setBounds(390, 230, 190, 30);
 
         jLabelMunicipio.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelMunicipio.setForeground(new java.awt.Color(51, 102, 0));
         jLabelMunicipio.setText("Municipio");
         jLabelMunicipio.setToolTipText("");
         getContentPane().add(jLabelMunicipio);
-        jLabelMunicipio.setBounds(620, 180, 80, 40);
+        jLabelMunicipio.setBounds(600, 200, 80, 40);
 
         municipioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "SP", "RS", "MG", "RJ" }));
         municipioComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -169,14 +173,14 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(municipioComboBox);
-        municipioComboBox.setBounds(620, 210, 80, 30);
+        municipioComboBox.setBounds(600, 230, 80, 30);
 
         jLabelEstado.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEstado.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEstado.setText("Estado");
         jLabelEstado.setToolTipText("");
         getContentPane().add(jLabelEstado);
-        jLabelEstado.setBounds(720, 180, 80, 40);
+        jLabelEstado.setBounds(700, 200, 80, 40);
 
         estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "São Paulo", "Rio Grande do Sul", "Minas Gerais", "Rio de Janeiro" }));
         estadoComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -185,14 +189,14 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estadoComboBox);
-        estadoComboBox.setBounds(720, 210, 160, 30);
+        estadoComboBox.setBounds(700, 230, 160, 30);
 
         jLabelCNPJ.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelCNPJ.setForeground(new java.awt.Color(51, 102, 0));
         jLabelCNPJ.setText("CNPJ");
         jLabelCNPJ.setToolTipText("");
         getContentPane().add(jLabelCNPJ);
-        jLabelCNPJ.setBounds(310, 110, 50, 30);
+        jLabelCNPJ.setBounds(290, 130, 50, 30);
 
         try {
             cnpjFormattedCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
@@ -206,23 +210,23 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cnpjFormattedCad);
-        cnpjFormattedCad.setBounds(310, 140, 250, 30);
+        cnpjFormattedCad.setBounds(290, 160, 250, 30);
 
         jLabelRazao.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelRazao.setForeground(new java.awt.Color(51, 102, 0));
         jLabelRazao.setText("Razão social");
         jLabelRazao.setToolTipText("");
         getContentPane().add(jLabelRazao);
-        jLabelRazao.setBounds(580, 110, 150, 30);
+        jLabelRazao.setBounds(560, 130, 150, 30);
         getContentPane().add(razaoTextField);
-        razaoTextField.setBounds(580, 140, 290, 30);
+        razaoTextField.setBounds(560, 160, 290, 30);
 
         jLabelEmail.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEmail.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEmail.setText("Email");
         jLabelEmail.setToolTipText("");
         getContentPane().add(jLabelEmail);
-        jLabelEmail.setBounds(40, 250, 90, 30);
+        jLabelEmail.setBounds(20, 270, 90, 30);
 
         emailTextCad.setToolTipText("");
         emailTextCad.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +235,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emailTextCad);
-        emailTextCad.setBounds(40, 280, 250, 30);
+        emailTextCad.setBounds(20, 300, 250, 30);
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,7 +249,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonSalvar);
-        jButtonSalvar.setBounds(360, 360, 80, 23);
+        jButtonSalvar.setBounds(330, 380, 80, 23);
 
         jButtonCancel.setText("Limpar");
         jButtonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -254,12 +258,11 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonCancel);
-        jButtonCancel.setBounds(470, 360, 90, 23);
+        jButtonCancel.setBounds(480, 380, 90, 23);
 
-        jLabel1.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
-        jLabel1.setText("Cadastro de cliente");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/MASVIG_phixrClienteCad.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(360, 30, 210, 50);
+        jLabel1.setBounds(0, 0, 890, 460);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,13 +271,13 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jMenuInicio.setText("Inicio");
-        jMenuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuInicioMouseClicked(evt);
+        jMenu1.setText("Inicio");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenuInicio);
+        jMenuBar1.add(jMenu1);
 
         jMenuSair.setText("Cadastros");
 
@@ -294,13 +297,13 @@ public class TelaCliente extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuUsuario);
 
-        jMenuChamado.setText("Chamado");
-        jMenuChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuAtendimento.setText("Atendimento");
+        jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuChamadoActionPerformed(evt);
+                jMenuAtendimentoActionPerformed(evt);
             }
         });
-        jMenuSair.add(jMenuChamado);
+        jMenuSair.add(jMenuAtendimento);
 
         jMenuBar1.add(jMenuSair);
 
@@ -322,13 +325,13 @@ public class TelaCliente extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdUsuario);
 
-        jMenuEdChamado.setText("Chamado");
-        jMenuEdChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEdAtendimento.setText("Atendimento");
+        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdChamadoActionPerformed(evt);
+                jMenuEdAtendimentoActionPerformed(evt);
             }
         });
-        jMenuEditar.add(jMenuEdChamado);
+        jMenuEditar.add(jMenuEdAtendimento);
 
         jMenuBar1.add(jMenuEditar);
 
@@ -342,13 +345,13 @@ public class TelaCliente extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuRelatorio);
 
-        jMenuExConsulta.setText("Consulta atendimento");
-        jMenuExConsulta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuExConsultaAtendimento.setText("Consulta atendimento");
+        jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuExConsultaActionPerformed(evt);
+                jMenuExConsultaAtendimentoActionPerformed(evt);
             }
         });
-        jMenuExibir.add(jMenuExConsulta);
+        jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
         jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
@@ -358,8 +361,13 @@ public class TelaCliente extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaFuncional);
 
-        jMenuItem1.setText("Consulta cliente");
-        jMenuExibir.add(jMenuItem1);
+        jMenuConsultaCliente.setText("Consulta cliente");
+        jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaCliente);
 
         jMenuBar1.add(jMenuExibir);
 
@@ -373,7 +381,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(906, 539));
+        setSize(new java.awt.Dimension(879, 511));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -408,9 +416,11 @@ public class TelaCliente extends javax.swing.JFrame {
         
         */
         
-
+       
         Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, num, tel, cel);
+        novoCliente.insereCliente();
         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        //limpa os canais de preenchimento
         cnpjFormattedCad.setText("");
         razaoTextField.setText("");
         nomeTextCad.setText("");
@@ -451,60 +461,6 @@ public class TelaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cnpjFormattedCadActionPerformed
 
-    private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
-        new TelaCliente().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuClienteActionPerformed
-
-    private void jMenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarioActionPerformed
-        new TelaUser().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuUsuarioActionPerformed
-
-    private void jMenuChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChamadoActionPerformed
-        new TelaAtendimento().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuChamadoActionPerformed
-
-    private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
-        new TelaEditaCliente().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuEdClienteActionPerformed
-
-    private void jMenuEdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioActionPerformed
-        new TelaEditaUsuario().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
-
-    private void jMenuEdChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdChamadoActionPerformed
-        new TelaAtendimentoEditar().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuEdChamadoActionPerformed
-
-    private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
-        new TelaGerenteRelatorio().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuRelatorioActionPerformed
-
-    private void jMenuExConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaActionPerformed
-        new TelaAtendimentoConsulta().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuExConsultaActionPerformed
-
-    private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
-        new Consultar().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
-
-    private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
-        // Botão Sair - tela principal
-        System.exit(0);
-    }//GEN-LAST:event_jMenu3SairMouseClicked
-
-    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBar1MouseClicked
-
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
         cnpjFormattedCad.setText("");
         razaoTextField.setText("");
@@ -517,10 +473,68 @@ public class TelaCliente extends javax.swing.JFrame {
         celTextCad.setText("");
     }//GEN-LAST:event_jButtonCancelMouseClicked
 
-    private void jMenuInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuInicioMouseClicked
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         new TelaInicio().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuInicioMouseClicked
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
+        new TelaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuClienteActionPerformed
+
+    private void jMenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarioActionPerformed
+        new TelaUser().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuUsuarioActionPerformed
+
+    private void jMenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtendimentoActionPerformed
+        new TelaAtendimento().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuAtendimentoActionPerformed
+
+    private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
+        new TelaEditaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuEdClienteActionPerformed
+
+    private void jMenuEdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioActionPerformed
+        new TelaEditaUsuario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
+
+    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
+        new TelaAtendimentoEditar().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
+
+    private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
+        new TelaGerenteRelatorio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuRelatorioActionPerformed
+
+    private void jMenuExConsultaAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoActionPerformed
+        new TelaAtendimentoConsulta().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
+
+    private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
+        new Consultar().setVisible(true);
+    }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
+
+    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+        new TelaConsultaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
+
+    private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
+        // Botão Sair - tela principal
+        System.exit(0);
+    }//GEN-LAST:event_jMenu3SairMouseClicked
+
+    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuBar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -581,19 +595,19 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNum;
     private javax.swing.JLabel jLabelRazao;
     private javax.swing.JLabel jLabelTel;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
+    private javax.swing.JMenuItem jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuChamado;
     private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
-    private javax.swing.JMenuItem jMenuEdChamado;
+    private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuExConsulta;
+    private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
-    private javax.swing.JMenu jMenuInicio;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;

@@ -43,6 +43,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Login");
+        setResizable(false);
+        setSize(new java.awt.Dimension(920, 490));
         getContentPane().setLayout(null);
 
         jButton1Acessar.setText("Acessar");
@@ -91,10 +93,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jPasswordField2Senha.setBounds(400, 240, 140, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/MASVIG_phixr.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(920, 490));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-3, 0, 890, 470);
+        jLabel1.setBounds(0, 0, 900, 490);
 
-        setSize(new java.awt.Dimension(901, 507));
+        setSize(new java.awt.Dimension(903, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

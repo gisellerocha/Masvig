@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class TelaEditaCliente extends javax.swing.JFrame {
 
+    private String cnpj;                                             
+    private Cliente buscaCliente;
     /**
      * Creates new form TelaPrincipal
      */
@@ -56,22 +58,25 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         emailTextCad = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        buscarLabel = new javax.swing.JLabel();
+        buscacnpjFormattedTextField = new javax.swing.JFormattedTextField();
+        jLabelBuscaCnpj = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar4 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
-        jMenuChamado = new javax.swing.JMenuItem();
+        jMenuAtendimento = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
-        jMenuEdChamado = new javax.swing.JMenuItem();
+        jMenuEdAtendimento = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
-        jMenuExConsulta = new javax.swing.JMenuItem();
+        jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuConsultaCliente = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -83,7 +88,7 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         jLabelNome.setText("Nome");
         jLabelNome.setToolTipText("");
         getContentPane().add(jLabelNome);
-        jLabelNome.setBounds(40, 110, 50, 30);
+        jLabelNome.setBounds(40, 150, 50, 30);
 
         nomeTextCad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,32 +101,32 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nomeTextCad);
-        nomeTextCad.setBounds(40, 140, 250, 30);
+        nomeTextCad.setBounds(40, 180, 250, 30);
 
         jLabelTel.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelTel.setForeground(new java.awt.Color(51, 102, 0));
         jLabelTel.setText("Tel");
         jLabelTel.setToolTipText("");
         getContentPane().add(jLabelTel);
-        jLabelTel.setBounds(310, 250, 50, 30);
+        jLabelTel.setBounds(310, 290, 50, 30);
         getContentPane().add(telTextCad);
-        telTextCad.setBounds(310, 280, 240, 30);
+        telTextCad.setBounds(310, 320, 240, 30);
 
         jLabelCel.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelCel.setForeground(new java.awt.Color(51, 102, 0));
         jLabelCel.setText("Cel");
         jLabelCel.setToolTipText("");
         getContentPane().add(jLabelCel);
-        jLabelCel.setBounds(570, 250, 50, 30);
+        jLabelCel.setBounds(570, 290, 50, 30);
         getContentPane().add(celTextCad);
-        celTextCad.setBounds(570, 280, 210, 30);
+        celTextCad.setBounds(570, 320, 210, 30);
 
         jLabelEnd.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEnd.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEnd.setText("Logradouro");
         jLabelEnd.setToolTipText("");
         getContentPane().add(jLabelEnd);
-        jLabelEnd.setBounds(40, 180, 90, 40);
+        jLabelEnd.setBounds(40, 220, 90, 40);
 
         endTextCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,14 +134,14 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(endTextCad);
-        endTextCad.setBounds(40, 210, 250, 30);
+        endTextCad.setBounds(40, 250, 250, 30);
 
         jLabelNum.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelNum.setForeground(new java.awt.Color(51, 102, 0));
         jLabelNum.setText("Num");
         jLabelNum.setToolTipText("");
         getContentPane().add(jLabelNum);
-        jLabelNum.setBounds(310, 180, 40, 40);
+        jLabelNum.setBounds(310, 220, 40, 40);
 
         numTextCad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,23 +149,23 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(numTextCad);
-        numTextCad.setBounds(310, 210, 80, 30);
+        numTextCad.setBounds(310, 250, 80, 30);
 
         jLabelComplemento.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelComplemento.setForeground(new java.awt.Color(51, 102, 0));
         jLabelComplemento.setText("Complemento");
         jLabelComplemento.setToolTipText("");
         getContentPane().add(jLabelComplemento);
-        jLabelComplemento.setBounds(410, 180, 130, 40);
+        jLabelComplemento.setBounds(410, 220, 130, 40);
         getContentPane().add(complementoTextCad);
-        complementoTextCad.setBounds(410, 210, 190, 30);
+        complementoTextCad.setBounds(410, 250, 190, 30);
 
         jLabelMunicipio.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelMunicipio.setForeground(new java.awt.Color(51, 102, 0));
         jLabelMunicipio.setText("Municipio");
         jLabelMunicipio.setToolTipText("");
         getContentPane().add(jLabelMunicipio);
-        jLabelMunicipio.setBounds(620, 180, 80, 40);
+        jLabelMunicipio.setBounds(620, 220, 80, 40);
 
         municipioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "SP", "RS", "MG", "RJ" }));
         municipioComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -169,14 +174,14 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(municipioComboBox);
-        municipioComboBox.setBounds(620, 210, 80, 30);
+        municipioComboBox.setBounds(620, 250, 80, 30);
 
         jLabelEstado.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEstado.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEstado.setText("Estado");
         jLabelEstado.setToolTipText("");
         getContentPane().add(jLabelEstado);
-        jLabelEstado.setBounds(720, 180, 80, 40);
+        jLabelEstado.setBounds(720, 220, 80, 40);
 
         estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "São Paulo", "Rio Grande do Sul", "Minas Gerais", "Rio de Janeiro" }));
         estadoComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -185,14 +190,14 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estadoComboBox);
-        estadoComboBox.setBounds(720, 210, 160, 30);
+        estadoComboBox.setBounds(720, 250, 160, 30);
 
         jLabelCNPJ.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelCNPJ.setForeground(new java.awt.Color(51, 102, 0));
         jLabelCNPJ.setText("CNPJ");
         jLabelCNPJ.setToolTipText("");
         getContentPane().add(jLabelCNPJ);
-        jLabelCNPJ.setBounds(310, 110, 50, 30);
+        jLabelCNPJ.setBounds(310, 150, 50, 30);
 
         try {
             cnpjFormattedCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
@@ -206,23 +211,23 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cnpjFormattedCad);
-        cnpjFormattedCad.setBounds(310, 140, 250, 30);
+        cnpjFormattedCad.setBounds(310, 180, 250, 30);
 
         jLabelRazao.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelRazao.setForeground(new java.awt.Color(51, 102, 0));
         jLabelRazao.setText("Razão social");
         jLabelRazao.setToolTipText("");
         getContentPane().add(jLabelRazao);
-        jLabelRazao.setBounds(580, 110, 150, 30);
+        jLabelRazao.setBounds(580, 150, 150, 30);
         getContentPane().add(razaoTextField);
-        razaoTextField.setBounds(580, 140, 290, 30);
+        razaoTextField.setBounds(580, 180, 290, 30);
 
         jLabelEmail.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabelEmail.setForeground(new java.awt.Color(51, 102, 0));
         jLabelEmail.setText("Email");
         jLabelEmail.setToolTipText("");
         getContentPane().add(jLabelEmail);
-        jLabelEmail.setBounds(40, 250, 90, 30);
+        jLabelEmail.setBounds(40, 290, 90, 30);
 
         emailTextCad.setToolTipText("");
         emailTextCad.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +236,7 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emailTextCad);
-        emailTextCad.setBounds(40, 280, 250, 30);
+        emailTextCad.setBounds(40, 320, 250, 30);
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,31 +250,59 @@ public class TelaEditaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonSalvar);
-        jButtonSalvar.setBounds(320, 360, 80, 23);
+        jButtonSalvar.setBounds(320, 400, 80, 23);
 
         jButtonCancel.setText("Limpar");
-        getContentPane().add(jButtonCancel);
-        jButtonCancel.setBounds(430, 360, 90, 23);
-
-        jLabel1.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
-        jLabel1.setText("Edição de cliente");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(370, 30, 180, 50);
-
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuBar1MouseClicked(evt);
-            }
-        });
-
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                jButtonCancelActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        getContentPane().add(jButtonCancel);
+        jButtonCancel.setBounds(430, 400, 90, 23);
+
+        buscarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        buscarLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buscarLabelMousePressed(evt);
+            }
+        });
+        getContentPane().add(buscarLabel);
+        buscarLabel.setBounds(270, 100, 30, 40);
+
+        try {
+            buscacnpjFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(buscacnpjFormattedTextField);
+        buscacnpjFormattedTextField.setBounds(40, 110, 220, 30);
+
+        jLabelBuscaCnpj.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabelBuscaCnpj.setForeground(new java.awt.Color(51, 102, 0));
+        jLabelBuscaCnpj.setText("Busca CNPJ");
+        jLabelBuscaCnpj.setToolTipText("");
+        getContentPane().add(jLabelBuscaCnpj);
+        jLabelBuscaCnpj.setBounds(40, 80, 130, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/MASVIG_AttCliente.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 890, 480);
+
+        jMenuBar4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuBar4MouseClicked(evt);
+            }
+        });
+
+        jMenu4.setText("Inicio");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+        jMenuBar4.add(jMenu4);
 
         jMenuSair.setText("Cadastros");
 
@@ -289,15 +322,15 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuUsuario);
 
-        jMenuChamado.setText("Chamado");
-        jMenuChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuAtendimento.setText("Atendimento");
+        jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuChamadoActionPerformed(evt);
+                jMenuAtendimentoActionPerformed(evt);
             }
         });
-        jMenuSair.add(jMenuChamado);
+        jMenuSair.add(jMenuAtendimento);
 
-        jMenuBar1.add(jMenuSair);
+        jMenuBar4.add(jMenuSair);
 
         jMenuEditar.setText("Editar");
 
@@ -317,15 +350,15 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdUsuario);
 
-        jMenuEdChamado.setText("Chamado");
-        jMenuEdChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEdAtendimento.setText("Atendimento");
+        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdChamadoActionPerformed(evt);
+                jMenuEdAtendimentoActionPerformed(evt);
             }
         });
-        jMenuEditar.add(jMenuEdChamado);
+        jMenuEditar.add(jMenuEdAtendimento);
 
-        jMenuBar1.add(jMenuEditar);
+        jMenuBar4.add(jMenuEditar);
 
         jMenuExibir.setText("Exibir");
 
@@ -337,13 +370,13 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuRelatorio);
 
-        jMenuExConsulta.setText("Consulta atendimento");
-        jMenuExConsulta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuExConsultaAtendimento.setText("Consulta atendimento");
+        jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuExConsultaActionPerformed(evt);
+                jMenuExConsultaAtendimentoActionPerformed(evt);
             }
         });
-        jMenuExibir.add(jMenuExConsulta);
+        jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
         jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
@@ -353,10 +386,15 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaFuncional);
 
-        jMenuItem1.setText("Consulta cliente");
-        jMenuExibir.add(jMenuItem1);
+        jMenuConsultaCliente.setText("Consulta cliente");
+        jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaCliente);
 
-        jMenuBar1.add(jMenuExibir);
+        jMenuBar4.add(jMenuExibir);
 
         jMenu3Sair.setText("Sair");
         jMenu3Sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,9 +402,9 @@ public class TelaEditaCliente extends javax.swing.JFrame {
                 jMenu3SairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3Sair);
+        jMenuBar4.add(jMenu3Sair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar4);
 
         setSize(new java.awt.Dimension(906, 539));
         setLocationRelativeTo(null);
@@ -381,34 +419,7 @@ public class TelaEditaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextCadActionPerformed
 
     private void jButtonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMouseClicked
-        /*  cnpj, razaoSocial, nome, endereço, complemento, municipio, estado, email, dataCadastro;
-    private int num, telefone, celular;
-    
-        */
-        
-        String cnpj = cnpjFormattedCad.getText();
-        String razao = razaoTextField.getText();
-        String nome = nomeTextCad.getText();
-        String end = endTextCad.getText();
-        String complemento = complementoTextCad.getText();
-        String municipio = municipioComboBox.getSelectedItem().toString();
-        String estado = estadoComboBox.getSelectedItem().toString();
-        String email = emailTextCad.getText();
-        String num = numTextCad.getText();
-        String tel = telTextCad.getText();
-        String cel = celTextCad.getText();
-        
-       /* Date data = null;
-    	String dataBanco ; 
-        
-        data = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(nasc);
-        
-        
-        dataBanco = new SimpleDateFormat("yyyy-MM-dd").format(data);
-        
-        */
 
-        Cliente novoCliente = new Cliente(cnpj, razao, nome, end, complemento, municipio, estado, email, num, tel, cel);
     }//GEN-LAST:event_jButtonSalvarMouseClicked
 
     private void nomeTextCadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeTextCadMouseClicked
@@ -432,17 +443,104 @@ public class TelaEditaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_estadoComboBoxActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+       int erro = 0;
+        
+        String nome = nomeTextCad.getText();
+        String cnpj = cnpjFormattedCad.getText();
+        String razao = razaoTextField.getText();
+        String logradouro = endTextCad.getText();
+        String num = numTextCad.getText(); 
+        String complemento = complementoTextCad.getText();
+        String estado = estadoComboBox.getEditor().getItem().toString();
+        String municipio = municipioComboBox.getEditor().getItem().toString();
+        String email = emailTextCad.getText();
+        String telefone = telTextCad.getText();
+        String celular = celTextCad.getText();
+        
+        this.cnpj = cnpj;
+        try{
+            int telefoneInteger = Integer.parseInt(telefone);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "ERRO, o telefone possui letras!");
+            erro++;
+        }   
+        if(telefone.length() > 8){
+            JOptionPane.showMessageDialog(null, "ERRO, o telefone excede o limite de caracteres");
+            erro++;
+        }
+        
+        
+        
+        if(erro == 0){
+            Cliente atualizar = new Cliente(cnpj, razao, nome, logradouro, estado, complemento, municipio, email, num, telefone, celular);
+            atualizar.setCnpjEditar(buscacnpjFormattedTextField.getText());
+            atualizar.setCnpj(this.cnpj);
+            if(atualizar.attCliente()== true){
+            JOptionPane.showMessageDialog(null, "Sucesso ao atualizar o cliente");
+            cnpjFormattedCad.setText(atualizar.getCnpj());
+            buscacnpjFormattedTextField.setText("");
+            nomeTextCad.setText("");
+            cnpjFormattedCad.setText("");
+            razaoTextField.setText("");
+            endTextCad.setText("");
+            numTextCad.setText(""); 
+            complementoTextCad.setText("");
+            estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "São Paulo", "Rio Grande do Sul", "Minas Gerais", "Rio de Janeiro" }));
+            municipioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "SP", "RS", "MG", "RJ" }));
+            emailTextCad.setText("");
+            telTextCad.setText("");
+            celTextCad.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao tentar atualizar o cliente");
+                cnpjFormattedCad.setText("ERRO!");
+            }
+        }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void buscarLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarLabelMousePressed
+       if(buscacnpjFormattedTextField.getText().length() > 0){
+            String cnpj = buscacnpjFormattedTextField.getText();
+            int erro = 0;
+            try{
+                this.cnpj = cnpj;
+            } catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "ERRO, o cnpj possui letras!");
+                erro++;
+            }
+            if(erro == 0){
+                Cliente buscar = new Cliente(null, null, null, null, null, null, null, null, "0", "0", "0");
+                this.buscaCliente = buscar.getCliente(this.cnpj);
+                if(this.buscaCliente == null){
+                    JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+                } else {
+                    String telefone = String.valueOf(this.buscaCliente.getTelefone());
+                    String celular = String.valueOf(this.buscaCliente.getCelular());
+                    String num = String.valueOf(this.buscaCliente.getNum());
+                    nomeTextCad.setText(this.buscaCliente.getNome());
+                    cnpjFormattedCad.setText(this.buscaCliente.getCnpj());
+                    razaoTextField.setText(this.buscaCliente.getRazaoSocial());
+                    complementoTextCad.setText(this.buscaCliente.getComplemento());
+                    municipioComboBox.getEditor().setItem(this.buscaCliente.getMunicipio());
+                    endTextCad.setText(this.buscaCliente.getEndereço());
+                    estadoComboBox.getEditor().setItem(this.buscaCliente.getEstado());
+                    emailTextCad.setText(this.buscaCliente.getEmail());
+                    telTextCad.setText(telefone);
+                    celTextCad.setText(celular);
+                    numTextCad.setText(num);
+                    //this.cnpj = this.buscaCliente.getBuscaCnpj();
+                }
+            }
+        }                  /**/                       
+    }//GEN-LAST:event_buscarLabelMousePressed
 
     private void cnpjFormattedCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjFormattedCadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cnpjFormattedCadActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
         new TelaInicio().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -454,10 +552,10 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuUsuarioActionPerformed
 
-    private void jMenuChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChamadoActionPerformed
+    private void jMenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtendimentoActionPerformed
         new TelaAtendimento().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuChamadoActionPerformed
+    }//GEN-LAST:event_jMenuAtendimentoActionPerformed
 
     private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
         new TelaEditaCliente().setVisible(true);
@@ -469,34 +567,53 @@ public class TelaEditaCliente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
 
-    private void jMenuEdChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdChamadoActionPerformed
+    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
         new TelaAtendimentoEditar().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuEdChamadoActionPerformed
+    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
 
     private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
         new TelaGerenteRelatorio().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuRelatorioActionPerformed
 
-    private void jMenuExConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaActionPerformed
+    private void jMenuExConsultaAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoActionPerformed
         new TelaAtendimentoConsulta().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuExConsultaActionPerformed
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
 
     private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
         new Consultar().setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
+
+    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+        new TelaConsultaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
 
     private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
         // Botão Sair - tela principal
         System.exit(0);
     }//GEN-LAST:event_jMenu3SairMouseClicked
 
-    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+    private void jMenuBar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar4MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBar1MouseClicked
+    }//GEN-LAST:event_jMenuBar4MouseClicked
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        buscacnpjFormattedTextField.setText("");
+            nomeTextCad.setText("");
+            cnpjFormattedCad.setText("");
+            razaoTextField.setText("");
+            endTextCad.setText("");
+            numTextCad.setText(""); 
+            complementoTextCad.setText("");
+            estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "São Paulo", "Rio Grande do Sul", "Minas Gerais", "Rio de Janeiro" }));
+            municipioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE", "SP", "RS", "MG", "RJ" }));
+            emailTextCad.setText("");
+            telTextCad.setText("");
+            celTextCad.setText("");
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -541,6 +658,8 @@ public class TelaEditaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField buscacnpjFormattedTextField;
+    private javax.swing.JLabel buscarLabel;
     private javax.swing.JTextField celTextCad;
     private javax.swing.JFormattedTextField cnpjFormattedCad;
     private javax.swing.JTextField complementoTextCad;
@@ -549,7 +668,8 @@ public class TelaEditaCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> estadoComboBox;
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelBuscaCnpj;
     private javax.swing.JLabel jLabelCNPJ;
     private javax.swing.JLabel jLabelCel;
     private javax.swing.JLabel jLabelComplemento;
@@ -561,19 +681,19 @@ public class TelaEditaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNum;
     private javax.swing.JLabel jLabelRazao;
     private javax.swing.JLabel jLabelTel;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuChamado;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem jMenuAtendimento;
+    private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
-    private javax.swing.JMenuItem jMenuEdChamado;
+    private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuExConsulta;
+    private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;

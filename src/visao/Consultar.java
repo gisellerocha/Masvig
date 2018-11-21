@@ -117,7 +117,7 @@ public class Consultar extends javax.swing.JFrame {
     }//GEN-LAST:event_limparButtonActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        System.exit(0);
+    dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**

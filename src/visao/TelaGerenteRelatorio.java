@@ -47,29 +47,32 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
-        jMenuChamado = new javax.swing.JMenuItem();
+        jMenuAtendimento = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
-        jMenuEdChamado = new javax.swing.JMenuItem();
+        jMenuEdAtendimento = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
-        jMenuExConsulta = new javax.swing.JMenuItem();
+        jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuConsultaCliente = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setForeground(new java.awt.Color(0, 102, 51));
         jLabel1.setText("Relatorios");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 10, 48, 26);
+        jLabel1.setBounds(10, 10, 120, 40);
 
+        jLabel2.setForeground(new java.awt.Color(0, 102, 51));
         jLabel2.setText("Visualizar relatórios:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(150, 10, 110, 30);
+        jLabel2.setBounds(150, 10, 180, 50);
 
+        jCheckBox1.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox1.setText("Gráfico");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,8 +80,9 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCheckBox1);
-        jCheckBox1.setBounds(150, 50, 59, 23);
+        jCheckBox1.setBounds(150, 50, 90, 40);
 
+        jCheckBox2.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox2.setText("Texto detalhado");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +90,9 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCheckBox2);
-        jCheckBox2.setBounds(240, 50, 110, 23);
+        jCheckBox2.setBounds(260, 50, 110, 40);
 
+        jCheckBox3.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox3.setText("Lista");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +100,9 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCheckBox3);
-        jCheckBox3.setBounds(370, 50, 47, 23);
+        jCheckBox3.setBounds(410, 50, 120, 40);
 
+        jCheckBox4.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox4.setText("Chamados abertos");
         jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,16 +110,19 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCheckBox4);
-        jCheckBox4.setBounds(140, 160, 115, 23);
+        jCheckBox4.setBounds(140, 160, 190, 40);
 
+        jCheckBox5.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox5.setText("Chamados em andamento");
         getContentPane().add(jCheckBox5);
-        jCheckBox5.setBounds(140, 200, 149, 23);
+        jCheckBox5.setBounds(140, 200, 220, 40);
 
+        jCheckBox6.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox6.setText("Chamados solucionados");
         getContentPane().add(jCheckBox6);
-        jCheckBox6.setBounds(140, 240, 150, 23);
+        jCheckBox6.setBounds(140, 240, 220, 40);
 
+        jCheckBox7.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox7.setText("Chamados cancelados");
         jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,12 +130,14 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jCheckBox7);
-        jCheckBox7.setBounds(140, 280, 140, 23);
+        jCheckBox7.setBounds(140, 280, 210, 40);
 
+        jCheckBox8.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox8.setText("Problemas por período");
         getContentPane().add(jCheckBox8);
-        jCheckBox8.setBounds(390, 160, 140, 23);
+        jCheckBox8.setBounds(390, 140, 210, 40);
 
+        nascFormattedUsu.setForeground(new java.awt.Color(0, 102, 51));
         try {
             nascFormattedUsu.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -135,26 +146,29 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         getContentPane().add(nascFormattedUsu);
         nascFormattedUsu.setBounds(390, 190, 100, 40);
 
+        nascFormattedUsu1.setForeground(new java.awt.Color(0, 102, 51));
         try {
             nascFormattedUsu1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         getContentPane().add(nascFormattedUsu1);
-        nascFormattedUsu1.setBounds(530, 190, 100, 40);
+        nascFormattedUsu1.setBounds(530, 190, 120, 40);
 
+        jCheckBox9.setForeground(new java.awt.Color(0, 102, 51));
         jCheckBox9.setText("Chamados por técnico");
         getContentPane().add(jCheckBox9);
-        jCheckBox9.setBounds(390, 250, 150, 23);
+        jCheckBox9.setBounds(390, 250, 200, 20);
 
+        jTextField1.setForeground(new java.awt.Color(0, 102, 51));
         jTextField1.setText("funcional");
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(390, 280, 190, 30);
+        jTextField1.setBounds(390, 280, 160, 30);
 
+        jLabel4.setForeground(new java.awt.Color(0, 102, 51));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(590, 280, 30, 30);
+        jLabel4.setBounds(570, 280, 40, 32);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,13 +203,13 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuUsuario);
 
-        jMenuChamado.setText("Chamado");
-        jMenuChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuAtendimento.setText("Atendimento");
+        jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuChamadoActionPerformed(evt);
+                jMenuAtendimentoActionPerformed(evt);
             }
         });
-        jMenuSair.add(jMenuChamado);
+        jMenuSair.add(jMenuAtendimento);
 
         jMenuBar1.add(jMenuSair);
 
@@ -217,13 +231,13 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdUsuario);
 
-        jMenuEdChamado.setText("Chamado");
-        jMenuEdChamado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEdAtendimento.setText("Atendimento");
+        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdChamadoActionPerformed(evt);
+                jMenuEdAtendimentoActionPerformed(evt);
             }
         });
-        jMenuEditar.add(jMenuEdChamado);
+        jMenuEditar.add(jMenuEdAtendimento);
 
         jMenuBar1.add(jMenuEditar);
 
@@ -237,13 +251,13 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuRelatorio);
 
-        jMenuExConsulta.setText("Consulta atendimento");
-        jMenuExConsulta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuExConsultaAtendimento.setText("Consulta atendimento");
+        jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuExConsultaActionPerformed(evt);
+                jMenuExConsultaAtendimentoActionPerformed(evt);
             }
         });
-        jMenuExibir.add(jMenuExConsulta);
+        jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
         jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
@@ -253,8 +267,13 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaFuncional);
 
-        jMenuItem1.setText("Consulta cliente");
-        jMenuExibir.add(jMenuItem1);
+        jMenuConsultaCliente.setText("Consulta cliente");
+        jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaCliente);
 
         jMenuBar1.add(jMenuExibir);
 
@@ -307,10 +326,10 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuUsuarioActionPerformed
 
-    private void jMenuChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChamadoActionPerformed
+    private void jMenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtendimentoActionPerformed
         new TelaAtendimento().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuChamadoActionPerformed
+    }//GEN-LAST:event_jMenuAtendimentoActionPerformed
 
     private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
         new TelaEditaCliente().setVisible(true);
@@ -322,25 +341,29 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
 
-    private void jMenuEdChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdChamadoActionPerformed
+    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
         new TelaAtendimentoEditar().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuEdChamadoActionPerformed
+    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
 
     private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
         new TelaGerenteRelatorio().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuRelatorioActionPerformed
 
-    private void jMenuExConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaActionPerformed
+    private void jMenuExConsultaAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoActionPerformed
         new TelaAtendimentoConsulta().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuExConsultaActionPerformed
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
 
     private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
         new Consultar().setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
+
+    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+        new TelaConsultaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
 
     private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
         // Botão Sair - tela principal
@@ -401,17 +424,17 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
+    private javax.swing.JMenuItem jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuChamado;
     private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
-    private javax.swing.JMenuItem jMenuEdChamado;
+    private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuExConsulta;
+    private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;

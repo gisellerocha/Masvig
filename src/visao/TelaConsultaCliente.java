@@ -5,6 +5,9 @@
  */
 package visao;
 
+import dao.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author XL
@@ -16,8 +19,32 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
      */
     public TelaConsultaCliente() {
         initComponents();
+        listarTodosQuandoAbrir();
     }
 
+    public void listarTodosQuandoAbrir(){
+        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
+        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 0);
+        
+        int tamanho = buscarCliente.listaCnpj.size();
+        
+        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
+        dtm2.setNumRows(0);
+        //ISSO TIRA AS LINHAS DA TABELA
+        int x=0;
+        
+        for(int i = 0; i < tamanho; i++){
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
+            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
+            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
+            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
+            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
+            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            x++;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,43 +54,224 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        nome = new javax.swing.JTextField();
+        lupaCnpj = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabela1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cnpj = new javax.swing.JTextField();
+        lupaNome = new javax.swing.JLabel();
+        botaoListarTodos = new javax.swing.JButton();
+        razao = new javax.swing.JTextField();
+        lupaRazao = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consulta de clientes");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeActionPerformed(evt);
+            }
+        });
+
+        lupaCnpj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaCnpj.setText("jLabel1");
+        lupaCnpj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaCnpjMouseClicked(evt);
+            }
+        });
+
+        Tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CNPJ", "Razão Social", "Nome", "Email", "Telefone", "Endereço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabela1);
+
+        jLabel2.setText("Nome");
+
+        jLabel3.setText("CNPJ");
+
+        lupaNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaNome.setText("jLabel1");
+        lupaNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaNomeMouseClicked(evt);
+            }
+        });
+
+        botaoListarTodos.setText("Listar Todos");
+        botaoListarTodos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoListarTodosMouseClicked(evt);
+            }
+        });
+
+        lupaRazao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaRazao.setText("jLabel1");
+        lupaRazao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lupaRazaoMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setText("Razão Social");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(296, 296, 296)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lupaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(lupaCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(razao, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(lupaRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(botaoListarTodos))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaNome)
+                    .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaCnpj)
+                    .addComponent(razao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaRazao)
+                    .addComponent(botaoListarTodos))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
+
+    private void lupaCnpjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCnpjMouseClicked
+        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
+        buscarCliente.setCnpj(cnpj.getText());
+        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 1);
+        
+        int tamanho = buscarCliente.listaCnpj.size();
+        
+        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
+        dtm2.setNumRows(0);
+        //ISSO TIRA AS LINHAS DA TABELA
+        int x=0;
+        
+        for(int i = 0; i < tamanho; i++){
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
+            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
+            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
+            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
+            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
+            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            x++;
+        }
+    }//GEN-LAST:event_lupaCnpjMouseClicked
+
+    private void botaoListarTodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoListarTodosMouseClicked
+        listarTodosQuandoAbrir();
+    }//GEN-LAST:event_botaoListarTodosMouseClicked
+
+    private void lupaNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaNomeMouseClicked
+        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
+        buscarCliente.setNome(nome.getText());
+        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 3);
+        
+        int tamanho = buscarCliente.listaCnpj.size();
+        
+        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
+        dtm2.setNumRows(0);
+        //ISSO TIRA AS LINHAS DA TABELA
+        int x=0;
+        
+        for(int i = 0; i < tamanho; i++){
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
+            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
+            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
+            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
+            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
+            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            x++;
+        }
+    }//GEN-LAST:event_lupaNomeMouseClicked
+
+    private void lupaRazaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaRazaoMouseClicked
+        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
+        buscarCliente.setRazaoSocial(razao.getText());
+        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 2);
+        
+        int tamanho = buscarCliente.listaCnpj.size();
+        
+        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
+        dtm2.setNumRows(0);
+        //ISSO TIRA AS LINHAS DA TABELA
+        int x=0;
+        
+        for(int i = 0; i < tamanho; i++){
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
+            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
+            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
+            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
+            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
+            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            x++;
+        }
+    }//GEN-LAST:event_lupaRazaoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -101,7 +309,18 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabela1;
+    private javax.swing.JButton botaoListarTodos;
+    private javax.swing.JTextField cnpj;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lupaCnpj;
+    private javax.swing.JLabel lupaNome;
+    private javax.swing.JLabel lupaRazao;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField razao;
     // End of variables declaration//GEN-END:variables
 }
