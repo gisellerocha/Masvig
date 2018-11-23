@@ -30,9 +30,17 @@ public class AuthDAO {
             Connection conn = DAO.getConexao();
             PreparedStatement stmt = conn.prepareStatement(SQL);
             ResultSet rs = stmt.executeQuery();
-            this.auth = rs.next();
+            Auth usuarioSessao = new Auth(0, null);
+            while(rs.next()){
+                usuarioSessao.setFuncional(rs.getInt("funcional"));
+                usuarioSessao.setTipo_de_usuario(rs.getString("cargo"));
+            }
+            Sessao sessao = Sessao.getInstance();
+            sessao.setUsuario(usuarioSessao);
+            this.auth = true;
         } catch (SQLException e){
             System.out.println("" + e);
+            this.auth = false;
         }
         return this.auth;
     }

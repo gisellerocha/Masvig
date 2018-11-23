@@ -5,6 +5,7 @@
  */
 package visao;
 
+import dao.Sessao;
 import javax.swing.JOptionPane;
 
 /**
@@ -200,22 +201,34 @@ public class TelaInicio extends javax.swing.JFrame {
         new TelaAtendimento().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuAtendimentoActionPerformed
-
+//PARTE DE EDIÇÃO!//
     private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
-        new TelaEditaCliente().setVisible(true);
-        dispose();
+        if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaEditaCliente().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdClienteActionPerformed
 
     private void jMenuEdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioActionPerformed
-        new TelaEditaUsuario().setVisible(true);
-        dispose();
+        if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaEditaUsuario().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
 
     private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
-        new TelaAtendimentoEditar().setVisible(true);
-        dispose();
+        if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaAtendimentoEditar().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
-
+//FIM DA PARTE DE EDIÇÃO!//
     private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
         new TelaGerenteRelatorio().setVisible(true);
         dispose();

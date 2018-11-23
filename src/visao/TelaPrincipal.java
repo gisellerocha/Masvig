@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package visao;
-
+import dao.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author XL
