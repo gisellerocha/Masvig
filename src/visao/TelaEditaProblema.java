@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 package visao;
-
 import dao.*;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author XL
+ * @author Alunos
  */
-public class TelaGerenteRelatorio extends javax.swing.JFrame {
+public class TelaEditaProblema extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaGerenteRelatorio
+     * Creates new form TelaPrincipal2
      */
-    public TelaGerenteRelatorio() {
+    public TelaEditaProblema() {
         initComponents();
     }
 
@@ -29,11 +29,15 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        descricaoLabel = new javax.swing.JLabel();
+        jButtonInserir = new javax.swing.JButton();
+        problemaTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabela1 = new javax.swing.JTable();
+        descricaoTextArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
@@ -56,58 +60,54 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(500, 500));
         getContentPane().setLayout(null);
 
-        jLabel1.setForeground(new java.awt.Color(0, 102, 51));
-        jLabel1.setText("Relatorios");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 10, 120, 40);
+        descricaoLabel.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        descricaoLabel.setText("Descrição");
+        getContentPane().add(descricaoLabel);
+        descricaoLabel.setBounds(20, 160, 140, 20);
 
-        jButton1.setText("Total de atendimentos por tipo de problema");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        jButtonInserir.setText("Alterar");
+        jButtonInserir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonInserirMousePressed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(80, 20, 290, 23);
+        getContentPane().add(jButtonInserir);
+        jButtonInserir.setBounds(380, 370, 70, 30);
+        getContentPane().add(problemaTextField);
+        problemaTextField.setBounds(20, 110, 450, 30);
 
-        jButton2.setText("Total de atendimento por cliente");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(420, 20, 290, 23);
-
-        Tabela1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nome", "Quantidade"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(Tabela1);
+        descricaoTextArea.setColumns(20);
+        descricaoTextArea.setRows(5);
+        jScrollPane1.setViewportView(descricaoTextArea);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(12, 70, 700, 300);
+        jScrollPane1.setBounds(20, 180, 450, 140);
+
+        jLabel1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabel1.setText("Tipo do problema");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 90, 140, 20);
+        getContentPane().add(id);
+        id.setBounds(20, 40, 40, 30);
+
+        jLabel3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        jLabel3.setText("ID");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 20, 140, 20);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu1.setText("Inicio");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenuSair.setText("Cadastros");
@@ -168,6 +168,11 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         jMenuEdAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuEdAtendimentoMousePressed(evt);
+            }
+        });
+        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEdAtendimentoActionPerformed(evt);
             }
         });
         jMenuEditar.add(jMenuEdAtendimento);
@@ -248,43 +253,39 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Relatorio todosOsRelatorios = new Relatorio();
-        todosOsRelatorios = todosOsRelatorios.todos(todosOsRelatorios, 1);
-        
-        int tamanho = todosOsRelatorios.Nome.size();
-        
-        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
-        dtm2.setNumRows(0);
-        //ISSO TIRA AS LINHAS DA TABELA
-        int x=0;
-        
-        for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(todosOsRelatorios.Nome.get(i)),x,0);
-            Tabela1.setValueAt(todosOsRelatorios.Quantidade.get(i),x,1);
-            x++;
+    private void jButtonInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInserirMousePressed
+        int erro = 0;
+        //verificação do nome
+        String nomedoproblema = problemaTextField.getText();
+        if(nomedoproblema.length() == 0){
+            erro = 1;
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+        //verificação da descrição
+        String descricao = descricaoTextArea.getText();
+        if(nomedoproblema.length() == 0 || nomedoproblema.length() > 99){
+            if(erro == 1){
+                erro = 3;
+            } else {
+                erro = 2;
+            }
+        }
+        
+        if(erro == 0){
+            Problema salvar = new Problema(nomedoproblema, descricao);
+            salvar.inserirProblema();
+        } else if(erro == 1){
+            JOptionPane.showMessageDialog(rootPane, "O nome do problema não pode ficar em branco!");
+        } else if(erro == 2){
+            JOptionPane.showMessageDialog(rootPane, "A descrição não pode exceder mais que 99 caracteres!");
+        } else if(erro == 3){
+            JOptionPane.showMessageDialog(rootPane, "Ambos os campos estão preenchidos de forma incorreta!!!\nVerifique a quantidade de caracteres na descrição ou se ambos estão preenchidos!");
+        }
+    }//GEN-LAST:event_jButtonInserirMousePressed
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Relatorio todosOsRelatorios = new Relatorio();
-        todosOsRelatorios = todosOsRelatorios.todos(todosOsRelatorios, 2);
-        
-        int tamanho = todosOsRelatorios.Nome.size();
-        
-        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
-        dtm2.setNumRows(0);
-        //ISSO TIRA AS LINHAS DA TABELA
-        int x=0;
-        
-        for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(todosOsRelatorios.Nome.get(i)),x,0);
-            Tabela1.setValueAt(todosOsRelatorios.Quantidade.get(i),x,1);
-            x++;
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+       new TelaInicio().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClienteMousePressed
        new TelaCliente().setVisible(true);
@@ -315,6 +316,10 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
        new TelaEditaUsuario().setVisible(true);
        dispose();
     }//GEN-LAST:event_jMenuEdUsuarioMousePressed
+
+    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
 
     private void jMenuEdAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoMousePressed
        new TelaAtendimentoEditar().setVisible(true);
@@ -376,29 +381,34 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaGerenteRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditaProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaGerenteRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditaProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaGerenteRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditaProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaGerenteRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditaProblema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaGerenteRelatorio().setVisible(true);
+                new TelaEditaProblema().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabela1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel descricaoLabel;
+    private javax.swing.JTextArea descricaoTextArea;
+    private javax.swing.JTextField id;
+    private javax.swing.JButton jButtonInserir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuItem jMenuAtendimento;
@@ -419,6 +429,8 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField problemaTextField;
     // End of variables declaration//GEN-END:variables
 }

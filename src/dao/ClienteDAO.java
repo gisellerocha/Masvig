@@ -169,7 +169,7 @@ public class ClienteDAO {
             return cliente;
 
         } catch (SQLException ex) {
-            System.out.println("Erro ao tentar atualizar o cliente: " + ex);
+            System.out.println("Erro ao tentar consultar todos os clientes: " + ex);
             cliente = null;
             return cliente;
         }

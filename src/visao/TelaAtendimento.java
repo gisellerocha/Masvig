@@ -15,12 +15,31 @@ public class TelaAtendimento extends javax.swing.JFrame {
     
     private int id_atendimento;                                             
     private Atendimento buscaAtendimento;
+    private String[] nomedosproblemas;
+    private String erroComboBoxProblema = "Você precisa cadastrar ao menos um problema!";
+    private Problema problemas;
+    private int funcional;
     /**
      * Creates new form TelaAtendimento
      */
     public TelaAtendimento() {
         initComponents();
         listarTodosOsCLientesQuandoAbrir();
+        listarTodosOsProblemas();
+        funcionalText.setEditable(false);
+        this.funcional = Sessao.getInstance().getUsuario().getFuncional();
+        funcionalText.setText(String.valueOf(Sessao.getInstance().getUsuario().getNomeDeUsuario()));
+    }
+    
+    public void listarTodosOsProblemas(){
+        this.problemas = new Problema(null, null);
+        this.problemas = this.problemas.listarProblemas(this.problemas);
+        if(this.problemas != null){
+            this.nomedosproblemas = this.problemas.lista_nome_problema.toArray(new String[this.problemas.lista_id_problema.size()]);
+            jComboBoxProblema.setModel(new javax.swing.DefaultComboBoxModel<>(this.nomedosproblemas));
+        } else {
+            jComboBoxProblema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {erroComboBoxProblema}));
+        }
     }
 
     public void listarTodosOsCLientesQuandoAbrir(){
@@ -57,7 +76,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
         clienteLabelGerCon = new javax.swing.JLabel();
         clienteTextFieldGerCon = new javax.swing.JFormattedTextField();
         userLabelGerCon = new javax.swing.JLabel();
-        funcionalTextFieldGerCon = new javax.swing.JTextField();
+        funcionalText = new javax.swing.JTextField();
         telLabelGerCon = new javax.swing.JLabel();
         telTextFieldGerCon = new javax.swing.JTextField();
         emailLabelGerCon = new javax.swing.JLabel();
@@ -75,25 +94,32 @@ public class TelaAtendimento extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabela1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jComboBoxProblema = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
         jMenuAtendimento = new javax.swing.JMenuItem();
+        jMenuProblema = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
         jMenuEdAtendimento = new javax.swing.JMenuItem();
+        jMenuEdProblema = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
         jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
         jMenuConsultaCliente = new javax.swing.JMenuItem();
+        jMenuConsultaUsuario = new javax.swing.JMenuItem();
+        jMenuConsultaProblema = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 600));
+        setAlwaysOnTop(true);
+        setFocusTraversalPolicyProvider(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 600));
         getContentPane().setLayout(null);
@@ -127,13 +153,13 @@ public class TelaAtendimento extends javax.swing.JFrame {
         getContentPane().add(userLabelGerCon);
         userLabelGerCon.setBounds(510, 50, 70, 20);
 
-        funcionalTextFieldGerCon.addActionListener(new java.awt.event.ActionListener() {
+        funcionalText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funcionalTextFieldGerConActionPerformed(evt);
+                funcionalTextActionPerformed(evt);
             }
         });
-        getContentPane().add(funcionalTextFieldGerCon);
-        funcionalTextFieldGerCon.setBounds(510, 70, 130, 30);
+        getContentPane().add(funcionalText);
+        funcionalText.setBounds(510, 70, 130, 30);
 
         telLabelGerCon.setText("Telefone");
         getContentPane().add(telLabelGerCon);
@@ -157,7 +183,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
         getContentPane().add(assuntoLabelGerCon);
         assuntoLabelGerCon.setBounds(20, 280, 70, 20);
         getContentPane().add(assuntoTextFieldGerCon);
-        assuntoTextFieldGerCon.setBounds(20, 240, 410, 30);
+        assuntoTextFieldGerCon.setBounds(20, 240, 240, 30);
 
         lupaLabelGerCon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
         lupaLabelGerCon1.setText("jLabel5");
@@ -187,7 +213,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(saveButtonGerCon);
-        saveButtonGerCon.setBounds(470, 240, 80, 23);
+        saveButtonGerCon.setBounds(450, 350, 80, 23);
 
         jButtonGerCon.setText("Limpar");
         jButtonGerCon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,7 +222,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonGerCon);
-        jButtonGerCon.setBounds(560, 240, 80, 23);
+        jButtonGerCon.setBounds(540, 350, 80, 23);
 
         Tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,20 +252,33 @@ public class TelaAtendimento extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(650, 20, 190, 23);
 
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jComboBoxProblema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inserir produto", "Consultar produto", "Cadastro de novos produto", "Outros" }));
+        getContentPane().add(jComboBoxProblema);
+        jComboBoxProblema.setBounds(300, 240, 200, 30);
+
+        jLabel1.setText("Tipo de problema");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(300, 204, 120, 30);
+
+        jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuBar1MouseClicked(evt);
+                jMenuBar2MouseClicked(evt);
             }
         });
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        jMenu2.setText("Inicio");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(jMenu2);
 
         jMenuSair.setText("Cadastros");
 
@@ -267,11 +306,24 @@ public class TelaAtendimento extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuAtendimento);
 
-        jMenuBar1.add(jMenuSair);
+        jMenuProblema.setText("Problema");
+        jMenuProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuProblemaMousePressed(evt);
+            }
+        });
+        jMenuSair.add(jMenuProblema);
+
+        jMenuBar2.add(jMenuSair);
 
         jMenuEditar.setText("Editar");
 
         jMenuEdCliente.setText("Cliente");
+        jMenuEdCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuEdClienteMouseClicked(evt);
+            }
+        });
         jMenuEdCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuEdClienteActionPerformed(evt);
@@ -295,7 +347,15 @@ public class TelaAtendimento extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdAtendimento);
 
-        jMenuBar1.add(jMenuEditar);
+        jMenuEdProblema.setText("Problema");
+        jMenuEdProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdProblemaMousePressed(evt);
+            }
+        });
+        jMenuEditar.add(jMenuEdProblema);
+
+        jMenuBar2.add(jMenuEditar);
 
         jMenuExibir.setText("Exibir");
 
@@ -331,7 +391,23 @@ public class TelaAtendimento extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaCliente);
 
-        jMenuBar1.add(jMenuExibir);
+        jMenuConsultaUsuario.setText("Consulta usuário");
+        jMenuConsultaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaUsuarioMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaUsuario);
+
+        jMenuConsultaProblema.setText("Consulta problema");
+        jMenuConsultaProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaProblemaMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaProblema);
+
+        jMenuBar2.add(jMenuExibir);
 
         jMenu3Sair.setText("Sair");
         jMenu3Sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,17 +415,17 @@ public class TelaAtendimento extends javax.swing.JFrame {
                 jMenu3SairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3Sair);
+        jMenuBar2.add(jMenu3Sair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void funcionalTextFieldGerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionalTextFieldGerConActionPerformed
+    private void funcionalTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionalTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_funcionalTextFieldGerConActionPerformed
+    }//GEN-LAST:event_funcionalTextActionPerformed
 
     private void idAtendimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idAtendimentoTextFieldActionPerformed
         // TODO add your handling code here:
@@ -358,6 +434,19 @@ public class TelaAtendimento extends javax.swing.JFrame {
     private void saveButtonGerConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonGerConMouseClicked
             
         int erro = 0;
+        
+        String tipo_de_problema = jComboBoxProblema.getSelectedItem().toString();
+        if(tipo_de_problema.equals(erroComboBoxProblema)){
+            JOptionPane.showMessageDialog(null, "Você deve ao menos cadastrar um tipo de problema!");
+            erro++;
+        }
+
+        for(int x = 0; x < this.problemas.lista_id_problema.size(); x++){
+            if(this.problemas.lista_nome_problema.get(x).equals(tipo_de_problema)){
+                tipo_de_problema = this.problemas.lista_id_problema.get(x);
+            }
+        }
+        
         
         String assunto = assuntoTextFieldGerCon.getText();
         String descricao = descriTextFieldGerCon.getText();
@@ -377,6 +466,8 @@ public class TelaAtendimento extends javax.swing.JFrame {
         }
         if(erro == 0){
             Atendimento salvar = new Atendimento(assunto, descricao, email, responsavel, telefone, cnpj);
+            salvar.setTipo_de_problema(Integer.parseInt(tipo_de_problema));
+            salvar.setFuncional(this.funcional);
             if(salvar.inserirAtendimento() == true){
                 JOptionPane.showMessageDialog(null, "Sucesso ao inserir atendimento");
                 idAtendimentoTextField.setText(salvar.getIdAtendimento());
@@ -419,10 +510,35 @@ public class TelaAtendimento extends javax.swing.JFrame {
         clienteTextFieldGerCon.setText("");  
     }//GEN-LAST:event_jButtonGerConMouseClicked
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
+        buscarCliente.setRazaoSocial(JOptionPane.showInputDialog("Digite a razão social desejada"));
+        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 2);
+        
+        int tamanho = buscarCliente.listaCnpj.size();
+        
+        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
+        dtm2.setNumRows(0);
+        //ISSO TIRA AS LINHAS DA TABELA
+        int x=0;
+        
+        for(int i = 0; i < tamanho; i++){
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
+            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
+            x++;
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         new TelaInicio().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        new TelaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -478,29 +594,34 @@ public class TelaAtendimento extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenu3SairMouseClicked
 
-    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+    private void jMenuBar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBar1MouseClicked
+    }//GEN-LAST:event_jMenuBar2MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
-        buscarCliente.setRazaoSocial(JOptionPane.showInputDialog("Digite a razão social desejada"));
-        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 2);
-        
-        int tamanho = buscarCliente.listaCnpj.size();
-        
-        javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
-        dtm2.setNumRows(0);
-        //ISSO TIRA AS LINHAS DA TABELA
-        int x=0;
-        
-        for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
-            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
-            x++;
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void jMenuEdClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdClienteMouseClicked
+        new TelaEditaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuEdClienteMouseClicked
+
+    private void jMenuProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuProblemaMousePressed
+         new TelaProblema().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuProblemaMousePressed
+
+    private void jMenuEdProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdProblemaMousePressed
+       new TelaEditaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuEdProblemaMousePressed
+
+    private void jMenuConsultaProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaMousePressed
+       new TelaConsultaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
+
+    private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
+       new TelaConsultaUsuario().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaUsuarioMousePressed
 
     /**
      * @param args the command line arguments
@@ -550,24 +671,30 @@ public class TelaAtendimento extends javax.swing.JFrame {
     private javax.swing.JTextArea descriTextFieldGerCon;
     private javax.swing.JLabel emailLabelGerCon;
     private javax.swing.JTextField emailTextFieldGerCon;
-    private javax.swing.JTextField funcionalTextFieldGerCon;
+    private javax.swing.JTextField funcionalText;
     private javax.swing.JLabel idAtendimento;
     private javax.swing.JTextField idAtendimentoTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonGerCon;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JComboBox<String> jComboBoxProblema;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuItem jMenuAtendimento;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuCliente;
     private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
+    private javax.swing.JMenuItem jMenuConsultaProblema;
+    private javax.swing.JMenuItem jMenuConsultaUsuario;
     private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
+    private javax.swing.JMenuItem jMenuEdProblema;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
+    private javax.swing.JMenuItem jMenuProblema;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;

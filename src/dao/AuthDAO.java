@@ -13,7 +13,7 @@ import java.sql.*;
  */
 public class AuthDAO {
     
-    private boolean auth = false;
+    private boolean auth = false; //INICIALIZAMOS AUTH COMO FALSO PQ A CONSULTA PODE NÃO RETORNAR USUARIO NENHUM
     private int funcional;
     private String senha;
 
@@ -34,10 +34,14 @@ public class AuthDAO {
             while(rs.next()){
                 usuarioSessao.setFuncional(rs.getInt("funcional"));
                 usuarioSessao.setTipo_de_usuario(rs.getString("cargo"));
+                usuarioSessao.setNomeDeUsuario(rs.getString("nome"));
+                this.auth = true; //SE HOUVER RETORNO DO BANCO AUTH É VERDADEIRO
             }
-            Sessao sessao = Sessao.getInstance();
-            sessao.setUsuario(usuarioSessao);
-            this.auth = true;
+            Sessao sessao = Sessao.getInstance(); //AQUI SE INICIA A SESSÃO
+            sessao.setUsuario(usuarioSessao); //AQUI PASSAMOS O QUE QUEREMOS RESGATAR DEPOIS NO CASO UM TIPO AUTH QUE JÁ RECEBEU O TIPO DE USUARIO
+            stmt.close();
+            rs.close();
+            conn.close();
         } catch (SQLException e){
             System.out.println("" + e);
             this.auth = false;

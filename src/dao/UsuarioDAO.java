@@ -152,4 +152,41 @@ public class UsuarioDAO {
             return usuario;
         }
     }
+    public Usuario todosOsUsuarios(Usuario usuario, int todosOuUm){
+        String SQL = "select * from usuario";
+        if(todosOuUm == 1){
+            SQL = "select * from usuario where funcional = '" + usuario.getFuncional()+ "'";
+        }
+        if(todosOuUm == 2){
+            SQL = "select * from usuario where nome like '%" + usuario.getNome() + "%'";
+        }
+        if(todosOuUm == 3){
+            SQL = "select * from usuario where cpf = '" + usuario.getCpf()+ "'";
+        }
+           //System.out.println(atualizarSQL);
+        try {
+            ConexaoDAO DAO =  new ConexaoDAO();
+            this.conn = DAO.getConexao();
+            PreparedStatement stm = conn.prepareStatement(SQL);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                    usuario.listaFuncional.add(String.valueOf(rs.getInt("funcional")));
+                    usuario.listaNome.add(rs.getString("nome"));
+                    usuario.listaCpf.add(rs.getString("cpf"));
+                    usuario.listaTelefone.add(String.valueOf(rs.getInt("telefone")));
+                    usuario.listaCargo.add(rs.getString("cargo"));
+                    usuario.listaSenha.add(rs.getString("senha"));
+                    usuario.listaEmail.add(rs.getString("email"));
+                    
+            }
+            stm.close();
+            conn.close();
+            return usuario;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar consultar todos os usuarios: " + ex);
+            usuario = null;
+            return usuario;
+        }
+    }
 }

@@ -34,7 +34,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
     
     public void listarTodosOsAtendimentos(){
         Atendimento listados = new Atendimento(null, null, null, null, "0", null);
-        this.cnpj = clienteTextFieldGerCon.getText();
+        this.cnpj = cliente.getText();
         listados.todosOsClientes(0, null);
         
         int tamanho = listados.listaId.size();
@@ -68,7 +68,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         idAtendimento = new javax.swing.JLabel();
         idAtendimentoTextField = new javax.swing.JTextField();
         clienteLabelGerCon = new javax.swing.JLabel();
-        clienteTextFieldGerCon = new javax.swing.JTextField();
+        cliente = new javax.swing.JFormattedTextField();
         lupaLabelGerCon = new javax.swing.JLabel();
         userLabelGerCon = new javax.swing.JLabel();
         funcionalTextFieldGerCon = new javax.swing.JTextField();
@@ -87,8 +87,11 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         ultimosAtendimentos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        descriTextFieldGerCon1 = new javax.swing.JTextArea();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
@@ -102,6 +105,8 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
         jMenuConsultaCliente = new javax.swing.JMenuItem();
+        jMenuConsultaUsuario = new javax.swing.JMenuItem();
+        jMenuConsultaProblema = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,13 +130,13 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         getContentPane().add(clienteLabelGerCon);
         clienteLabelGerCon.setBounds(210, 20, 90, 24);
 
-        clienteTextFieldGerCon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteTextFieldGerConActionPerformed(evt);
-            }
-        });
-        getContentPane().add(clienteTextFieldGerCon);
-        clienteTextFieldGerCon.setBounds(210, 40, 200, 30);
+        try {
+            cliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(cliente);
+        cliente.setBounds(210, 40, 150, 30);
 
         lupaLabelGerCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
         lupaLabelGerCon.setText("jLabel5");
@@ -187,7 +192,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         assuntoTextFieldGerCon.setEditable(false);
         assuntoTextFieldGerCon.setPreferredSize(new java.awt.Dimension(450, 30));
         getContentPane().add(assuntoTextFieldGerCon);
-        assuntoTextFieldGerCon.setBounds(40, 180, 560, 30);
+        assuntoTextFieldGerCon.setBounds(40, 180, 320, 30);
 
         lupaLabelGerCon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
         lupaLabelGerCon1.setText("jLabel5");
@@ -206,7 +211,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         jScrollPane1.setViewportView(descriTextFieldGerCon);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 240, 560, 140);
+        jScrollPane1.setBounds(40, 240, 320, 140);
 
         assuntoLabelGerCon1.setText("Assunto");
         getContentPane().add(assuntoLabelGerCon1);
@@ -248,20 +253,38 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(660, 30, 500, 402);
 
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setText("Solução");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(380, 220, 60, 20);
+
+        descriTextFieldGerCon1.setEditable(false);
+        descriTextFieldGerCon1.setColumns(20);
+        descriTextFieldGerCon1.setRows(5);
+        descriTextFieldGerCon1.setPreferredSize(new java.awt.Dimension(450, 30));
+        jScrollPane4.setViewportView(descriTextFieldGerCon1);
+
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(380, 240, 250, 140);
+
+        jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuBar1MouseClicked(evt);
+                jMenuBar2MouseClicked(evt);
             }
         });
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        jMenu2.setText("Inicio");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(jMenu2);
 
         jMenuSair.setText("Cadastros");
 
@@ -289,7 +312,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuAtendimento);
 
-        jMenuBar1.add(jMenuSair);
+        jMenuBar2.add(jMenuSair);
 
         jMenuEditar.setText("Editar");
 
@@ -317,7 +340,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdAtendimento);
 
-        jMenuBar1.add(jMenuEditar);
+        jMenuBar2.add(jMenuEditar);
 
         jMenuExibir.setText("Exibir");
 
@@ -353,7 +376,23 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaCliente);
 
-        jMenuBar1.add(jMenuExibir);
+        jMenuConsultaUsuario.setText("Consulta usuário");
+        jMenuConsultaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaUsuarioMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaUsuario);
+
+        jMenuConsultaProblema.setText("Consulta problema");
+        jMenuConsultaProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaProblemaMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaProblema);
+
+        jMenuBar2.add(jMenuExibir);
 
         jMenu3Sair.setText("Sair");
         jMenu3Sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -361,9 +400,9 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
                 jMenu3SairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3Sair);
+        jMenuBar2.add(jMenu3Sair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         pack();
         setLocationRelativeTo(null);
@@ -372,10 +411,6 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
     private void funcionalTextFieldGerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionalTextFieldGerConActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_funcionalTextFieldGerConActionPerformed
-
-    private void clienteTextFieldGerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteTextFieldGerConActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clienteTextFieldGerConActionPerformed
 
     private void idAtendimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idAtendimentoTextFieldActionPerformed
         // TODO add your handling code here:
@@ -403,7 +438,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
                     respTextFieldGerCon.setText(this.buscaAtendimento.getResponsavel());
                     telTextFieldGerCon.setText(telefone);
                     assuntoTextFieldGerCon.setText(this.buscaAtendimento.getAssunto());
-                    clienteTextFieldGerCon.setText(this.buscaAtendimento.getCnpj());
+                    cliente.setText(this.buscaAtendimento.getCnpj());
                     
                     
                     javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)jTable1.getModel();
@@ -424,7 +459,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
 
     private void lupaLabelGerCon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaLabelGerCon1MouseClicked
         Atendimento listados = new Atendimento(null, null, null, null, "0", null);
-        this.cnpj = clienteTextFieldGerCon.getText();
+        this.cnpj = cliente.getText();
         listados.todosOsClientes(0, this.cnpj);
         
         int tamanho = listados.listaId.size();
@@ -449,7 +484,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
 
     private void ultimosAtendimentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ultimosAtendimentosMouseClicked
         Atendimento listados = new Atendimento(null, null, null, null, "0", null);
-        this.cnpj = clienteTextFieldGerCon.getText();
+        this.cnpj = cliente.getText();
         listados.todosOsClientes(0, null);
         
         int tamanho = listados.listaId.size();
@@ -471,10 +506,15 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ultimosAtendimentosMouseClicked
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         new TelaInicio().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        new TelaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -530,9 +570,19 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenu3SairMouseClicked
 
-    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+    private void jMenuBar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBar1MouseClicked
+    }//GEN-LAST:event_jMenuBar2MouseClicked
+
+    private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
+       new TelaConsultaUsuario().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaUsuarioMousePressed
+
+    private void jMenuConsultaProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaMousePressed
+       new TelaConsultaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
 
     /**
      * @param args the command line arguments
@@ -574,21 +624,25 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel assuntoLabelGerCon;
     private javax.swing.JLabel assuntoLabelGerCon1;
     private javax.swing.JTextField assuntoTextFieldGerCon;
+    private javax.swing.JFormattedTextField cliente;
     private javax.swing.JLabel clienteLabelGerCon;
-    private javax.swing.JTextField clienteTextFieldGerCon;
     private javax.swing.JTextArea descriTextFieldGerCon;
+    private javax.swing.JTextArea descriTextFieldGerCon1;
     private javax.swing.JLabel emailLabelGerCon;
     private javax.swing.JTextField emailTextFieldGerCon;
     private javax.swing.JTextField funcionalTextFieldGerCon;
     private javax.swing.JLabel idAtendimento;
     private javax.swing.JTextField idAtendimentoTextField;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuItem jMenuAtendimento;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuCliente;
     private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
+    private javax.swing.JMenuItem jMenuConsultaProblema;
+    private javax.swing.JMenuItem jMenuConsultaUsuario;
     private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
     private javax.swing.JMenuItem jMenuEdUsuario;
@@ -600,6 +654,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lupaLabelGerCon;
     private javax.swing.JLabel lupaLabelGerCon1;

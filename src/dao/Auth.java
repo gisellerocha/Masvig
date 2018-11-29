@@ -13,6 +13,17 @@ public class Auth {
     protected int funcional;
     private String senha;
     protected String tipo_de_usuario;
+    private String nomeDeUsuario;
+
+    public String getNomeDeUsuario() {
+        return nomeDeUsuario;
+    }
+
+    public void setNomeDeUsuario(String nomeDeUsuario) {
+        this.nomeDeUsuario = nomeDeUsuario;
+    }
+    
+    
 
     public int getFuncional() {
         return funcional;
@@ -22,8 +33,6 @@ public class Auth {
         this.funcional = funcional;
     }
 
-    
-    
     public String getTipo_de_usuario() {
         return tipo_de_usuario;
     }

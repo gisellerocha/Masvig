@@ -21,8 +21,8 @@ public class AtendimentoDAO {
         private String[] buscaAtendimento;
     
     public boolean inserirAt(Atendimento atendimento){
-        String InsertAtendimento = "INSERT INTO atendimento(assunto, descricao, telefone, email, responsavel, cnpj) " 
-                + " VALUES (?, ?, ?, ?, ?, ?); ";
+        String InsertAtendimento = "INSERT INTO atendimento(assunto, descricao, telefone, email, responsavel, cnpj, id_problema, funcional) " 
+                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
         try {
             ConexaoDAO DAO =  new ConexaoDAO();
             this.conn = DAO.getConexao();
@@ -33,6 +33,8 @@ public class AtendimentoDAO {
             stm.setString(4, atendimento.getEmail());
             stm.setString(5, atendimento.getResponsavel());
             stm.setString(6, atendimento.getCnpj());
+            stm.setInt(7, atendimento.getTipo_de_problema());
+            stm.setInt(8, atendimento.getFuncional());
             
             stm.executeUpdate();
             stm.close();

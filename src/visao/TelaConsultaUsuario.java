@@ -6,27 +6,28 @@
 package visao;
 
 import dao.Cliente;
+import dao.*;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author XL
  */
-public class TelaConsultaCliente extends javax.swing.JFrame {
+public class TelaConsultaUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaConsultaCliente
      */
-    public TelaConsultaCliente() {
+    public TelaConsultaUsuario() {
         initComponents();
         listarTodosQuandoAbrir();
     }
 
     public void listarTodosQuandoAbrir(){
-        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
-        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 0);
+        Usuario buscarUsuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "0", "0", "0");
+        buscarUsuario = buscarUsuario.listarOsUsuarios(buscarUsuario, 0);
         
-        int tamanho = buscarCliente.listaCnpj.size();
+        int tamanho = buscarUsuario.listaFuncional.size();
         
         javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
         dtm2.setNumRows(0);
@@ -34,13 +35,14 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         int x=0;
         
         for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
-            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
-            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
-            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
-            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
-            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarUsuario.listaFuncional.get(i)),x,0);
+            Tabela1.setValueAt(buscarUsuario.listaNome.get(i),x,1);
+            Tabela1.setValueAt(buscarUsuario.listaCpf.get(i),x,2);
+            Tabela1.setValueAt(buscarUsuario.listaTelefone.get(i),x,3);
+            Tabela1.setValueAt(buscarUsuario.listaCargo.get(i),x,4);
+            Tabela1.setValueAt(buscarUsuario.listaSenha.get(i),x,5);
+            Tabela1.setValueAt(buscarUsuario.listaEmail.get(i),x,6);
             x++;
         }
     }
@@ -56,16 +58,16 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         nome = new javax.swing.JTextField();
-        lupaCnpj = new javax.swing.JLabel();
+        lupaCpf = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cnpj = new javax.swing.JFormattedTextField();
+        cpf = new javax.swing.JFormattedTextField();
         lupaNome = new javax.swing.JLabel();
         botaoListarTodos = new javax.swing.JButton();
-        razao = new javax.swing.JTextField();
-        lupaRazao = new javax.swing.JLabel();
+        funcional = new javax.swing.JTextField();
+        lupaFuncional = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -81,7 +83,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         jMenuEdProblema = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
-        jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
+        jMenuConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
         jMenuConsultaCliente = new javax.swing.JMenuItem();
         jMenuConsultaUsuario = new javax.swing.JMenuItem();
@@ -97,33 +99,33 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         });
 
-        lupaCnpj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
-        lupaCnpj.setText("jLabel1");
-        lupaCnpj.addMouseListener(new java.awt.event.MouseAdapter() {
+        lupaCpf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaCpf.setText("jLabel1");
+        lupaCpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lupaCnpjMouseClicked(evt);
+                lupaCpfMouseClicked(evt);
             }
         });
 
         Tabela1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "CNPJ", "Razão Social", "Nome", "Email", "Telefone", "Endereço"
+                "Funcional", "Nome", "Cpf", "Telefone", "Cargo", "Senha", "Email"
             }
         ));
         jScrollPane1.setViewportView(Tabela1);
 
         jLabel2.setText("Nome");
 
-        jLabel3.setText("CNPJ");
+        jLabel3.setText("CPF");
 
         try {
-            cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -143,21 +145,21 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         });
 
-        lupaRazao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
-        lupaRazao.setText("jLabel1");
-        lupaRazao.addMouseListener(new java.awt.event.MouseAdapter() {
+        lupaFuncional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-32.png"))); // NOI18N
+        lupaFuncional.setText("jLabel1");
+        lupaFuncional.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lupaRazaoMouseClicked(evt);
+                lupaFuncionalMouseClicked(evt);
             }
         });
 
-        jLabel4.setText("Razão Social");
+        jLabel4.setText("Funcional");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,14 +173,14 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                         .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(lupaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lupaCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lupaCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(razao, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(funcional, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(lupaRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lupaFuncional, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(botaoListarTodos))))
         );
@@ -194,21 +196,22 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lupaNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lupaCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(razao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lupaRazao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lupaCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(funcional, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lupaFuncional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botaoListarTodos)
-                    .addComponent(cnpj))
-                .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpf))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu1.setText("Inicio");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu1MousePressed(evt);
             }
         });
         jMenuBar1.add(jMenu1);
@@ -295,13 +298,13 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuRelatorio);
 
-        jMenuExConsultaAtendimento.setText("Consulta atendimento");
-        jMenuExConsultaAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuConsultaAtendimento.setText("Consulta atendimento");
+        jMenuConsultaAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuExConsultaAtendimentoMousePressed(evt);
+                jMenuConsultaAtendimentoMousePressed(evt);
             }
         });
-        jMenuExibir.add(jMenuExConsultaAtendimento);
+        jMenuExibir.add(jMenuConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
         jMenuConsultaFuncional.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,8 +342,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
         jMenu3Sair.setText("Sair");
         jMenu3Sair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3SairMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu3SairMousePressed(evt);
             }
         });
         jMenuBar1.add(jMenu3Sair);
@@ -367,12 +370,12 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeActionPerformed
 
-    private void lupaCnpjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCnpjMouseClicked
-        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
-        buscarCliente.setCnpj(cnpj.getText());
-        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 1);
+    private void lupaCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaCpfMouseClicked
+        Usuario buscarUsuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "0", "0", "0");
+        buscarUsuario.setCpf(cpf.getText());
+        buscarUsuario = buscarUsuario.listarOsUsuarios(buscarUsuario, 3);
         
-        int tamanho = buscarCliente.listaCnpj.size();
+        int tamanho = buscarUsuario.listaFuncional.size();
         
         javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
         dtm2.setNumRows(0);
@@ -380,27 +383,29 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         int x=0;
         
         for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
-            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
-            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
-            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
-            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
-            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarUsuario.listaFuncional.get(i)),x,0);
+            Tabela1.setValueAt(buscarUsuario.listaNome.get(i),x,1);
+            Tabela1.setValueAt(buscarUsuario.listaCpf.get(i),x,2);
+            Tabela1.setValueAt(buscarUsuario.listaTelefone.get(i),x,3);
+            Tabela1.setValueAt(buscarUsuario.listaCargo.get(i),x,4);
+            Tabela1.setValueAt(buscarUsuario.listaSenha.get(i),x,5);
+            Tabela1.setValueAt(buscarUsuario.listaEmail.get(i),x,6);
+            
             x++;
         }
-    }//GEN-LAST:event_lupaCnpjMouseClicked
+    }//GEN-LAST:event_lupaCpfMouseClicked
 
     private void botaoListarTodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoListarTodosMouseClicked
         listarTodosQuandoAbrir();
     }//GEN-LAST:event_botaoListarTodosMouseClicked
 
     private void lupaNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaNomeMouseClicked
-        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
-        buscarCliente.setNome(nome.getText());
-        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 3);
+        Usuario buscarUsuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "0", "0", "0");
+        buscarUsuario.setNome(nome.getText());
+        buscarUsuario = buscarUsuario.listarOsUsuarios(buscarUsuario, 2);
         
-        int tamanho = buscarCliente.listaCnpj.size();
+        int tamanho = buscarUsuario.listaFuncional.size();
         
         javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
         dtm2.setNumRows(0);
@@ -408,23 +413,24 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         int x=0;
         
         for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
-            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
-            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
-            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
-            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
-            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarUsuario.listaFuncional.get(i)),x,0);
+            Tabela1.setValueAt(buscarUsuario.listaNome.get(i),x,1);
+            Tabela1.setValueAt(buscarUsuario.listaCpf.get(i),x,2);
+            Tabela1.setValueAt(buscarUsuario.listaTelefone.get(i),x,3);
+            Tabela1.setValueAt(buscarUsuario.listaCargo.get(i),x,4);
+            Tabela1.setValueAt(buscarUsuario.listaSenha.get(i),x,5);
+            Tabela1.setValueAt(buscarUsuario.listaEmail.get(i),x,6);
             x++;
         }
     }//GEN-LAST:event_lupaNomeMouseClicked
 
-    private void lupaRazaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaRazaoMouseClicked
-        Cliente buscarCliente = new Cliente(null,null,null,null,null,null,null,null,"0","0","0");
-        buscarCliente.setRazaoSocial(razao.getText());
-        buscarCliente = buscarCliente.listarOsClientes(buscarCliente, 2);
+    private void lupaFuncionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaFuncionalMouseClicked
+        Usuario buscarUsuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "0", "0", "0");
+        buscarUsuario.setFuncional(Integer.parseInt(funcional.getText()));
+        buscarUsuario = buscarUsuario.listarOsUsuarios(buscarUsuario, 1);
         
-        int tamanho = buscarCliente.listaCnpj.size();
+        int tamanho = buscarUsuario.listaFuncional.size();
         
         javax.swing.table.DefaultTableModel dtm2 = (javax.swing.table.DefaultTableModel)Tabela1.getModel();
         dtm2.setNumRows(0);
@@ -432,21 +438,22 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         int x=0;
         
         for(int i = 0; i < tamanho; i++){
-            dtm2.addRow(new Object[]{" "," "," "," "," "," "});// cada " " para cada coluna
-            Tabela1.setValueAt(String.valueOf(buscarCliente.listaCnpj.get(i)),x,0);
-            Tabela1.setValueAt(buscarCliente.listaRazaoSocial.get(i),x,1);
-            Tabela1.setValueAt(buscarCliente.listaNome.get(i),x,2);
-            Tabela1.setValueAt(buscarCliente.listaEmail.get(i),x,3);
-            Tabela1.setValueAt(buscarCliente.listaTelefone.get(i),x,4);
-            Tabela1.setValueAt(buscarCliente.listaEndereço.get(i)+" "+buscarCliente.listaNum.get(i)+" "+buscarCliente.listaComplemento.get(i),x,5);
+            dtm2.addRow(new Object[]{" "," "," "," "," "," "," "});// cada " " para cada coluna
+            Tabela1.setValueAt(String.valueOf(buscarUsuario.listaFuncional.get(i)),x,0);
+            Tabela1.setValueAt(buscarUsuario.listaNome.get(i),x,1);
+            Tabela1.setValueAt(buscarUsuario.listaCpf.get(i),x,2);
+            Tabela1.setValueAt(buscarUsuario.listaTelefone.get(i),x,3);
+            Tabela1.setValueAt(buscarUsuario.listaCargo.get(i),x,4);
+            Tabela1.setValueAt(buscarUsuario.listaSenha.get(i),x,5);
+            Tabela1.setValueAt(buscarUsuario.listaEmail.get(i),x,6);
             x++;
         }
-    }//GEN-LAST:event_lupaRazaoMouseClicked
+    }//GEN-LAST:event_lupaFuncionalMouseClicked
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
        new TelaInicio().setVisible(true);
        dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClienteMousePressed
        new TelaCliente().setVisible(true);
@@ -493,10 +500,10 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_jMenuRelatorioMousePressed
 
-    private void jMenuExConsultaAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoMousePressed
+    private void jMenuConsultaAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaAtendimentoMousePressed
        new TelaAtendimentoConsulta().setVisible(true);
        dispose();
-    }//GEN-LAST:event_jMenuExConsultaAtendimentoMousePressed
+    }//GEN-LAST:event_jMenuConsultaAtendimentoMousePressed
 
     private void jMenuConsultaFuncionalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalMousePressed
        new Consultar().setVisible(true);
@@ -512,9 +519,9 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
 
-    private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jMenu3SairMouseClicked
+    private void jMenu3SairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMousePressed
+       System.exit(0);
+    }//GEN-LAST:event_jMenu3SairMousePressed
 
     private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
        new TelaConsultaUsuario().setVisible(true);
@@ -538,20 +545,21 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaConsultaCliente().setVisible(true);
+                new TelaConsultaUsuario().setVisible(true);
             }
         });
     }
@@ -559,7 +567,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabela1;
     private javax.swing.JButton botaoListarTodos;
-    private javax.swing.JFormattedTextField cnpj;
+    private javax.swing.JFormattedTextField cpf;
+    private javax.swing.JTextField funcional;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -568,6 +577,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuConsultaAtendimento;
     private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
     private javax.swing.JMenuItem jMenuConsultaProblema;
@@ -577,7 +587,6 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEdProblema;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
     private javax.swing.JMenuItem jMenuProblema;
     private javax.swing.JMenuItem jMenuRelatorio;
@@ -585,10 +594,9 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lupaCnpj;
+    private javax.swing.JLabel lupaCpf;
+    private javax.swing.JLabel lupaFuncional;
     private javax.swing.JLabel lupaNome;
-    private javax.swing.JLabel lupaRazao;
     private javax.swing.JTextField nome;
-    private javax.swing.JTextField razao;
     // End of variables declaration//GEN-END:variables
 }

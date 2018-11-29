@@ -14,7 +14,7 @@
             <Property name="text" type="java.lang.String" value="Inicio"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MousePressed"/>
           </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuSair">
@@ -108,12 +108,12 @@
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuRelatorioMousePressed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuExConsultaAtendimento">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaAtendimento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta atendimento"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuExConsultaAtendimentoMousePressed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuConsultaAtendimentoMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaFuncional">
@@ -155,7 +155,7 @@
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu3SairMouseClicked"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu3SairMousePressed"/>
           </Events>
         </Menu>
       </SubComponents>
@@ -203,7 +203,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" min="-2" pref="1086" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" alignment="1" min="-2" pref="1086" max="-2" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -211,21 +211,21 @@
                           <Component id="jLabel2" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace min="296" pref="296" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
+                          <EmptySpace min="260" pref="260" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="nome" min="-2" pref="310" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="lupaNome" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cnpj" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lupaCnpj" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="cpf" min="-2" pref="248" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lupaCpf" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="razao" min="-2" pref="265" max="-2" attributes="0"/>
+                          <Component id="funcional" min="-2" pref="265" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                          <Component id="lupaRazao" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="lupaFuncional" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="botaoListarTodos" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -246,14 +246,15 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="nome" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lupaNome" max="32767" attributes="0"/>
-                      <Component id="lupaCnpj" max="32767" attributes="0"/>
-                      <Component id="razao" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lupaRazao" max="32767" attributes="0"/>
+                      <Component id="lupaCpf" max="32767" attributes="0"/>
+                      <Component id="funcional" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lupaFuncional" max="32767" attributes="0"/>
                       <Component id="botaoListarTodos" min="-2" max="-2" attributes="0"/>
-                      <Component id="cnpj" max="32767" attributes="0"/>
+                      <Component id="cpf" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="315" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -264,7 +265,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lupaCnpj">
+        <Component class="javax.swing.JLabel" name="lupaCpf">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagens/icons8-pesquisar-32.png"/>
@@ -272,7 +273,7 @@
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaCnpjMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaCpfMouseClicked"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -285,17 +286,23 @@
             <Component class="javax.swing.JTable" name="Tabela1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="CNPJ" type="java.lang.Object"/>
-                    <Column editable="true" title="Raz&#xe3;o Social" type="java.lang.Object"/>
+                  <Table columnCount="7" rowCount="4">
+                    <Column editable="true" title="Funcional" type="java.lang.Object"/>
                     <Column editable="true" title="Nome" type="java.lang.Object"/>
-                    <Column editable="true" title="Email" type="java.lang.Object"/>
+                    <Column editable="true" title="Cpf" type="java.lang.Object"/>
                     <Column editable="true" title="Telefone" type="java.lang.Object"/>
-                    <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
+                    <Column editable="true" title="Cargo" type="java.lang.Object"/>
+                    <Column editable="true" title="Senha" type="java.lang.Object"/>
+                    <Column editable="true" title="Email" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -342,13 +349,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CNPJ"/>
+            <Property name="text" type="java.lang.String" value="CPF"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="cnpj">
+        <Component class="javax.swing.JFormattedTextField" name="cpf">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##.###.###/####-##" subtype="-1" type="5"/>
+              <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -371,9 +378,9 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botaoListarTodosMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="razao">
+        <Component class="javax.swing.JTextField" name="funcional">
         </Component>
-        <Component class="javax.swing.JLabel" name="lupaRazao">
+        <Component class="javax.swing.JLabel" name="lupaFuncional">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagens/icons8-pesquisar-32.png"/>
@@ -381,12 +388,12 @@
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaRazaoMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lupaFuncionalMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Raz&#xe3;o Social"/>
+            <Property name="text" type="java.lang.String" value="Funcional"/>
           </Properties>
         </Component>
       </SubComponents>

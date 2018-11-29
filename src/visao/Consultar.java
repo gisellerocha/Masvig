@@ -31,10 +31,10 @@ public class Consultar extends javax.swing.JFrame {
 
         textcpfLabel = new javax.swing.JLabel();
         textfuncionalLabel = new javax.swing.JLabel();
-        cpfTextField = new javax.swing.JTextField();
         funcionalTextField = new javax.swing.JTextField();
         buscaButton = new javax.swing.JButton();
         limparButton = new javax.swing.JButton();
+        cpf = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         fundoLabel = new javax.swing.JLabel();
 
@@ -52,8 +52,6 @@ public class Consultar extends javax.swing.JFrame {
         textfuncionalLabel.setText("Funcional:");
         getContentPane().add(textfuncionalLabel);
         textfuncionalLabel.setBounds(10, 110, 100, 30);
-        getContentPane().add(cpfTextField);
-        cpfTextField.setBounds(130, 60, 155, 30);
 
         funcionalTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +79,14 @@ public class Consultar extends javax.swing.JFrame {
         getContentPane().add(limparButton);
         limparButton.setBounds(170, 180, 73, 23);
 
+        try {
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(cpf);
+        cpf.setBounds(130, 60, 160, 30);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-cancelar-25.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,7 +109,7 @@ public class Consultar extends javax.swing.JFrame {
     }//GEN-LAST:event_funcionalTextFieldActionPerformed
 
     private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
-       String cpf = cpfTextField.getText();
+       String cpf = this.cpf.getText();
         UsuarioDAO dao = new UsuarioDAO();
         // declara uma variável da classe UsuarioDAO chamada dao
         // e cria um novo objeto do tipo UsuarioDAO
@@ -112,7 +118,7 @@ public class Consultar extends javax.swing.JFrame {
     }//GEN-LAST:event_buscaButtonActionPerformed
 
     private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
-        cpfTextField.setText("");
+        cpf.setText("");
         funcionalTextField.setText("");
     }//GEN-LAST:event_limparButtonActionPerformed
 
@@ -157,7 +163,7 @@ public class Consultar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscaButton;
-    private javax.swing.JTextField cpfTextField;
+    private javax.swing.JFormattedTextField cpf;
     private javax.swing.JTextField funcionalTextField;
     private javax.swing.JLabel fundoLabel;
     private javax.swing.JLabel jLabel2;

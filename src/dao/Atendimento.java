@@ -28,6 +28,8 @@ public class Atendimento {
     private Atendimento buscaAtendimento;
     private int id_atendimento;
     private ResultSet atendimentos;
+    private int tipo_de_problema;
+    private int funcional;
 
     public Atendimento(String assunto, String descricao, String email, String responsavel, String telefone, String cnpj) {
         this.assunto = assunto;
@@ -38,6 +40,22 @@ public class Atendimento {
         this.cnpj = cnpj;
     }
 
+    public int getFuncional() {
+        return funcional;
+    }
+
+    public void setFuncional(int funcional) {
+        this.funcional = funcional;
+    }
+    
+    public int getTipo_de_problema() {
+        return tipo_de_problema;
+    }
+
+    public void setTipo_de_problema(int tipo_de_problema) {
+        this.tipo_de_problema = tipo_de_problema;
+    }
+    
     public int getId_atendimento() {
         return id_atendimento;
     }

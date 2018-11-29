@@ -30,49 +30,59 @@ public class TelaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
         jMenuCliente = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenuItem();
         jMenuAtendimento = new javax.swing.JMenuItem();
+        jMenuProblema = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
         jMenuEdCliente = new javax.swing.JMenuItem();
         jMenuEdUsuario = new javax.swing.JMenuItem();
         jMenuEdAtendimento = new javax.swing.JMenuItem();
+        jMenuEdProblema = new javax.swing.JMenuItem();
         jMenuExibir = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenuItem();
         jMenuExConsultaAtendimento = new javax.swing.JMenuItem();
         jMenuConsultaFuncional = new javax.swing.JMenuItem();
         jMenuConsultaCliente = new javax.swing.JMenuItem();
+        jMenuConsultaUsuario = new javax.swing.JMenuItem();
+        jMenuConsultaProblema = new javax.swing.JMenuItem();
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(new java.awt.Dimension(890, 520));
+        setSize(new java.awt.Dimension(1200, 700));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/MASVIG_phixr.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuBar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenuBar3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuBar1MouseClicked(evt);
+                jMenuBar3MouseClicked(evt);
             }
         });
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        jMenu3.setText("Inicio");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+        jMenuBar3.add(jMenu3);
 
         jMenuSair.setText("Cadastros");
 
         jMenuCliente.setText("Cliente");
+        jMenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuClienteMousePressed(evt);
+            }
+        });
         jMenuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuClienteActionPerformed(evt);
@@ -81,6 +91,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuSair.add(jMenuCliente);
 
         jMenuUsuario.setText("Usuário");
+        jMenuUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuUsuarioMousePressed(evt);
+            }
+        });
         jMenuUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuUsuarioActionPerformed(evt);
@@ -89,6 +104,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuSair.add(jMenuUsuario);
 
         jMenuAtendimento.setText("Atendimento");
+        jMenuAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuAtendimentoMousePressed(evt);
+            }
+        });
         jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuAtendimentoActionPerformed(evt);
@@ -96,11 +116,24 @@ public class TelaInicio extends javax.swing.JFrame {
         });
         jMenuSair.add(jMenuAtendimento);
 
-        jMenuBar1.add(jMenuSair);
+        jMenuProblema.setText("Problema");
+        jMenuProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuProblemaMousePressed(evt);
+            }
+        });
+        jMenuSair.add(jMenuProblema);
+
+        jMenuBar3.add(jMenuSair);
 
         jMenuEditar.setText("Editar");
 
         jMenuEdCliente.setText("Cliente");
+        jMenuEdCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdClienteMousePressed(evt);
+            }
+        });
         jMenuEdCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuEdClienteActionPerformed(evt);
@@ -109,6 +142,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuEditar.add(jMenuEdCliente);
 
         jMenuEdUsuario.setText("Usuário");
+        jMenuEdUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdUsuarioMousePressed(evt);
+            }
+        });
         jMenuEdUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuEdUsuarioActionPerformed(evt);
@@ -117,6 +155,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuEditar.add(jMenuEdUsuario);
 
         jMenuEdAtendimento.setText("Atendimento");
+        jMenuEdAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdAtendimentoMousePressed(evt);
+            }
+        });
         jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuEdAtendimentoActionPerformed(evt);
@@ -124,11 +167,24 @@ public class TelaInicio extends javax.swing.JFrame {
         });
         jMenuEditar.add(jMenuEdAtendimento);
 
-        jMenuBar1.add(jMenuEditar);
+        jMenuEdProblema.setText("Problema");
+        jMenuEdProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdProblemaMousePressed(evt);
+            }
+        });
+        jMenuEditar.add(jMenuEdProblema);
+
+        jMenuBar3.add(jMenuEditar);
 
         jMenuExibir.setText("Exibir");
 
         jMenuRelatorio.setText("Relatórios");
+        jMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuRelatorioMousePressed(evt);
+            }
+        });
         jMenuRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuRelatorioActionPerformed(evt);
@@ -137,6 +193,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuExibir.add(jMenuRelatorio);
 
         jMenuExConsultaAtendimento.setText("Consulta atendimento");
+        jMenuExConsultaAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuExConsultaAtendimentoMousePressed(evt);
+            }
+        });
         jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuExConsultaAtendimentoActionPerformed(evt);
@@ -145,6 +206,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
+        jMenuConsultaFuncional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaFuncionalMousePressed(evt);
+            }
+        });
         jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuConsultaFuncionalActionPerformed(evt);
@@ -153,6 +219,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuExibir.add(jMenuConsultaFuncional);
 
         jMenuConsultaCliente.setText("Consulta cliente");
+        jMenuConsultaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaClienteMousePressed(evt);
+            }
+        });
         jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuConsultaClienteActionPerformed(evt);
@@ -160,7 +231,23 @@ public class TelaInicio extends javax.swing.JFrame {
         });
         jMenuExibir.add(jMenuConsultaCliente);
 
-        jMenuBar1.add(jMenuExibir);
+        jMenuConsultaUsuario.setText("Consulta usuário");
+        jMenuConsultaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaUsuarioMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaUsuario);
+
+        jMenuConsultaProblema.setText("Consulta problema");
+        jMenuConsultaProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaProblemaMousePressed(evt);
+            }
+        });
+        jMenuExibir.add(jMenuConsultaProblema);
+
+        jMenuBar3.add(jMenuExibir);
 
         jMenu3Sair.setText("Sair");
         jMenu3Sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,24 +255,34 @@ public class TelaInicio extends javax.swing.JFrame {
                 jMenu3SairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3Sair);
+        jMenuBar3.add(jMenu3Sair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 679, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        new TelaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        new TelaInicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         new TelaCliente().setVisible(true);
@@ -201,13 +298,13 @@ public class TelaInicio extends javax.swing.JFrame {
         new TelaAtendimento().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuAtendimentoActionPerformed
-//PARTE DE EDIÇÃO!//
+//INICIO DA PARTE DE EDIÇÃO!//
     private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
         if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
             new TelaEditaCliente().setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
         }
     }//GEN-LAST:event_jMenuEdClienteActionPerformed
 
@@ -216,7 +313,7 @@ public class TelaInicio extends javax.swing.JFrame {
             new TelaEditaUsuario().setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
         }
     }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
 
@@ -225,7 +322,7 @@ public class TelaInicio extends javax.swing.JFrame {
             new TelaAtendimentoEditar().setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Apenas Gerentes!");
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
         }
     }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
 //FIM DA PARTE DE EDIÇÃO!//
@@ -239,28 +336,92 @@ public class TelaInicio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
 
+    private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
+        new Consultar().setVisible(true);
+    }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
+
+    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+        new TelaConsultaCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
+
     private void jMenu3SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMouseClicked
         // Botão Sair - tela principal
         System.exit(0);
     }//GEN-LAST:event_jMenu3SairMouseClicked
 
-    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+    private void jMenuBar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar3MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBar1MouseClicked
+    }//GEN-LAST:event_jMenuBar3MouseClicked
 
-    private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
-        new Consultar().setVisible(true);
-    }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-       new TelaInicio().setVisible(true);
+    private void jMenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClienteMousePressed
+       new TelaCliente().setVisible(true);
        dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenuClienteMousePressed
 
-    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
+    private void jMenuUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuUsuarioMousePressed
+       new TelaUser().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuUsuarioMousePressed
+
+    private void jMenuAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAtendimentoMousePressed
+       new TelaAtendimento().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuAtendimentoMousePressed
+
+    private void jMenuProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuProblemaMousePressed
+       new TelaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuProblemaMousePressed
+
+    private void jMenuEdClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdClienteMousePressed
+       new TelaEditaCliente().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuEdClienteMousePressed
+
+    private void jMenuEdUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioMousePressed
+       new TelaEditaUsuario().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuEdUsuarioMousePressed
+
+    private void jMenuEdAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoMousePressed
+       new TelaAtendimentoEditar().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuEdAtendimentoMousePressed
+
+    private void jMenuEdProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdProblemaMousePressed
+       new TelaEditaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuEdProblemaMousePressed
+
+    private void jMenuRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMousePressed
+       new TelaGerenteRelatorio().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuRelatorioMousePressed
+
+    private void jMenuExConsultaAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoMousePressed
+       new TelaAtendimentoConsulta().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoMousePressed
+
+    private void jMenuConsultaFuncionalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalMousePressed
+       new Consultar().setVisible(true);
+    }//GEN-LAST:event_jMenuConsultaFuncionalMousePressed
+
+    private void jMenuConsultaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteMousePressed
        new TelaConsultaCliente().setVisible(true);
        dispose();
-    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
+    }//GEN-LAST:event_jMenuConsultaClienteMousePressed
+
+    private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
+       new TelaConsultaUsuario().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaUsuarioMousePressed
+
+    private void jMenuConsultaProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaMousePressed
+       new TelaConsultaProblema().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
 
     /**
      * @param args the command line arguments
@@ -298,20 +459,23 @@ public class TelaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu3Sair;
     private javax.swing.JMenuItem jMenuAtendimento;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuCliente;
     private javax.swing.JMenuItem jMenuConsultaCliente;
     private javax.swing.JMenuItem jMenuConsultaFuncional;
+    private javax.swing.JMenuItem jMenuConsultaProblema;
+    private javax.swing.JMenuItem jMenuConsultaUsuario;
     private javax.swing.JMenuItem jMenuEdAtendimento;
     private javax.swing.JMenuItem jMenuEdCliente;
+    private javax.swing.JMenuItem jMenuEdProblema;
     private javax.swing.JMenuItem jMenuEdUsuario;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuExConsultaAtendimento;
     private javax.swing.JMenu jMenuExibir;
+    private javax.swing.JMenuItem jMenuProblema;
     private javax.swing.JMenuItem jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenuItem jMenuUsuario;

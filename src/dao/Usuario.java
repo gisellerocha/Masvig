@@ -6,12 +6,24 @@
 package dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author XL
  */
+  
 public class Usuario {
+    
+    public ArrayList<String> listaFuncional = new ArrayList<String>();
+    public ArrayList<String> listaNome = new ArrayList<String>();
+    public ArrayList<String> listaCpf = new ArrayList<String>();
+    public ArrayList<String> listaTelefone = new ArrayList<String>();
+    public ArrayList<String> listaCargo = new ArrayList<String>();
+    public ArrayList<String> listaSenha = new ArrayList<String>();
+    public ArrayList<String> listaEmail = new ArrayList<String>();
+    
+    
     private Usuario buscaUsuario;
     private String nome, endereço, complemento, municipio, estado, sexo, email, cpf, rg,  dataNasc, orgao, exp, cargo, senha;
     private int telefone, celular, num, funcional;
@@ -196,5 +208,13 @@ public class Usuario {
        UsuarioDAO atualizaUsu = new UsuarioDAO();
        return atualizaUsu.atualizarUsuario(this);
        
+    }
+        public Usuario listarOsUsuarios(Usuario usuario, int num){
+        /*
+            public Cliente todosOsClientes(Cliente cliente, int todosOuUm){
+            int todosOuUm = 1, ele busca por cnpj se = a 2 ele busca por razão e 3 ele busca por nome
+        */
+        UsuarioDAO listarUsuario = new UsuarioDAO();
+        return listarUsuario.todosOsUsuarios(usuario, num);
     }
 }
