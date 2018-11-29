@@ -456,53 +456,103 @@ public class TelaConsultaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClienteMousePressed
-       new TelaCliente().setVisible(true);
-       dispose();
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaCliente().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
     }//GEN-LAST:event_jMenuClienteMousePressed
 
     private void jMenuUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuUsuarioMousePressed
-       new TelaUser().setVisible(true);
-       dispose();
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaUser().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
     }//GEN-LAST:event_jMenuUsuarioMousePressed
 
     private void jMenuAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAtendimentoMousePressed
-       new TelaAtendimento().setVisible(true);
-       dispose();
+           String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaAtendimento().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
     }//GEN-LAST:event_jMenuAtendimentoMousePressed
 
     private void jMenuProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuProblemaMousePressed
-       new TelaProblema().setVisible(true);
-       dispose();
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaProblema().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
     }//GEN-LAST:event_jMenuProblemaMousePressed
 
     private void jMenuEdClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdClienteMousePressed
+    String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+    if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
        new TelaEditaCliente().setVisible(true);
        dispose();
+    } else {
+       JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+    }
     }//GEN-LAST:event_jMenuEdClienteMousePressed
 
     private void jMenuEdUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioMousePressed
-       new TelaEditaUsuario().setVisible(true);
-       dispose();
+       String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaEditaUsuario().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuEdUsuarioMousePressed
 
     private void jMenuEdAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoMousePressed
-       new TelaAtendimentoEditar().setVisible(true);
-       dispose();
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaAtendimentoEditar().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuEdAtendimentoMousePressed
 
     private void jMenuEdProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdProblemaMousePressed
-       new TelaEditaProblema().setVisible(true);
-       dispose();
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaEditaProblema().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e tecnicos!");
+        }
     }//GEN-LAST:event_jMenuEdProblemaMousePressed
 
     private void jMenuRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMousePressed
-       new TelaGerenteRelatorio().setVisible(true);
-       dispose();
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente")){
+           new TelaGerenteRelatorio().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuRelatorioMousePressed
 
     private void jMenuConsultaAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaAtendimentoMousePressed
-       new TelaAtendimentoConsulta().setVisible(true);
-       dispose();
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaAtendimentoConsulta().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuConsultaAtendimentoMousePressed
 
     private void jMenuConsultaFuncionalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalMousePressed
@@ -510,13 +560,18 @@ public class TelaConsultaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuConsultaFuncionalMousePressed
 
     private void jMenuConsultaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteMousePressed
-       new TelaConsultaCliente().setVisible(true);
-       dispose();
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaConsultaCliente().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuConsultaClienteMousePressed
 
     private void jMenuConsultaProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaMousePressed
-       new TelaConsultaProblema().setVisible(true);
-       dispose();
+           new TelaConsultaProblema().setVisible(true);
+            dispose();
     }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
 
     private void jMenu3SairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3SairMousePressed
@@ -524,8 +579,13 @@ public class TelaConsultaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3SairMousePressed
 
     private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
-       new TelaConsultaUsuario().setVisible(true);
-       dispose();
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+            new TelaConsultaUsuario().setVisible(true);
+            dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuConsultaUsuarioMousePressed
 
     /**

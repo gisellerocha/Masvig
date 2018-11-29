@@ -31,7 +31,7 @@
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuClienteActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuClienteMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuUsuario">
@@ -39,7 +39,7 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuUsuarioActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuUsuarioMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuAtendimento">
@@ -47,7 +47,15 @@
                 <Property name="text" type="java.lang.String" value="Atendimento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAtendimentoActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuAtendimentoMousePressed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuProblema">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Problema"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuProblemaMousePressed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -62,7 +70,7 @@
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEdClienteActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEdClienteMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuEdUsuario">
@@ -70,7 +78,7 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEdUsuarioActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEdUsuarioMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuEdAtendimento">
@@ -78,7 +86,15 @@
                 <Property name="text" type="java.lang.String" value="Atendimento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEdAtendimentoActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEdAtendimentoMousePressed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuEdProblema">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Problema"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEdProblemaMousePressed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -93,7 +109,7 @@
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuRelatorioActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuRelatorioMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuExConsultaAtendimento">
@@ -101,7 +117,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta atendimento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuExConsultaAtendimentoActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuExConsultaAtendimentoMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaFuncional">
@@ -109,7 +125,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta funcional"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultaFuncionalActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuConsultaFuncionalMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaCliente">
@@ -117,7 +133,7 @@
                 <Property name="text" type="java.lang.String" value="Consulta cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultaClienteActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuConsultaClienteMousePressed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaUsuario">

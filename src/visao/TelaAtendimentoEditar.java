@@ -267,6 +267,11 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu1.setText("Inicio");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
@@ -277,33 +282,33 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         jMenuSair.setText("Cadastros");
 
         jMenuCliente.setText("Cliente");
-        jMenuCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuClienteActionPerformed(evt);
+        jMenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuClienteMousePressed(evt);
             }
         });
         jMenuSair.add(jMenuCliente);
 
         jMenuUsuario.setText("Usuário");
-        jMenuUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuUsuarioActionPerformed(evt);
+        jMenuUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuUsuarioMousePressed(evt);
             }
         });
         jMenuSair.add(jMenuUsuario);
 
         jMenuAtendimento.setText("Atendimento");
-        jMenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAtendimentoActionPerformed(evt);
+        jMenuAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuAtendimentoMousePressed(evt);
             }
         });
         jMenuSair.add(jMenuAtendimento);
 
         jMenuProblema.setText("Problema");
-        jMenuProblema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuProblemaActionPerformed(evt);
+        jMenuProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuProblemaMousePressed(evt);
             }
         });
         jMenuSair.add(jMenuProblema);
@@ -313,33 +318,33 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         jMenuEditar.setText("Editar");
 
         jMenuEdCliente.setText("Cliente");
-        jMenuEdCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdClienteActionPerformed(evt);
+        jMenuEdCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdClienteMousePressed(evt);
             }
         });
         jMenuEditar.add(jMenuEdCliente);
 
         jMenuEdUsuario.setText("Usuário");
-        jMenuEdUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdUsuarioActionPerformed(evt);
+        jMenuEdUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdUsuarioMousePressed(evt);
             }
         });
         jMenuEditar.add(jMenuEdUsuario);
 
         jMenuEdAtendimento.setText("Atendimento");
-        jMenuEdAtendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdAtendimentoActionPerformed(evt);
+        jMenuEdAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdAtendimentoMousePressed(evt);
             }
         });
         jMenuEditar.add(jMenuEdAtendimento);
 
         jMenuEdProblema.setText("Problema");
-        jMenuEdProblema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEdProblemaActionPerformed(evt);
+        jMenuEdProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEdProblemaMousePressed(evt);
             }
         });
         jMenuEditar.add(jMenuEdProblema);
@@ -349,33 +354,33 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         jMenuExibir.setText("Exibir");
 
         jMenuRelatorio.setText("Relatórios");
-        jMenuRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRelatorioActionPerformed(evt);
+        jMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuRelatorioMousePressed(evt);
             }
         });
         jMenuExibir.add(jMenuRelatorio);
 
         jMenuExConsultaAtendimento.setText("Consulta atendimento");
-        jMenuExConsultaAtendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuExConsultaAtendimentoActionPerformed(evt);
+        jMenuExConsultaAtendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuExConsultaAtendimentoMousePressed(evt);
             }
         });
         jMenuExibir.add(jMenuExConsultaAtendimento);
 
         jMenuConsultaFuncional.setText("Consulta funcional");
-        jMenuConsultaFuncional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultaFuncionalActionPerformed(evt);
+        jMenuConsultaFuncional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaFuncionalMousePressed(evt);
             }
         });
         jMenuExibir.add(jMenuConsultaFuncional);
 
         jMenuConsultaCliente.setText("Consulta cliente");
-        jMenuConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultaClienteActionPerformed(evt);
+        jMenuConsultaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaClienteMousePressed(evt);
             }
         });
         jMenuExibir.add(jMenuConsultaCliente);
@@ -389,9 +394,9 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         jMenuExibir.add(jMenuConsultaUsuario);
 
         jMenuConsultaProblema.setText("Consulta problema");
-        jMenuConsultaProblema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultaProblemaActionPerformed(evt);
+        jMenuConsultaProblema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuConsultaProblemaMousePressed(evt);
             }
         });
         jMenuExibir.add(jMenuConsultaProblema);
@@ -522,79 +527,143 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_jMenu1ActionPerformed
 
-    private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
-       new TelaCliente().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuClienteActionPerformed
-
-    private void jMenuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarioActionPerformed
-       new TelaUser().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuUsuarioActionPerformed
-
-    private void jMenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtendimentoActionPerformed
-       new TelaAtendimento().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuAtendimentoActionPerformed
-
-    private void jMenuProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProblemaActionPerformed
-       new TelaProblema().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuProblemaActionPerformed
-
-    private void jMenuEdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdClienteActionPerformed
-       new TelaEditaCliente().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuEdClienteActionPerformed
-
-    private void jMenuEdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioActionPerformed
-       new TelaEditaUsuario().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuEdUsuarioActionPerformed
-
-    private void jMenuEdAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoActionPerformed
-       new TelaAtendimentoEditar().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuEdAtendimentoActionPerformed
-
-    private void jMenuEdProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEdProblemaActionPerformed
-       new TelaEditaProblema().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuEdProblemaActionPerformed
-
-    private void jMenuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRelatorioActionPerformed
-       new TelaGerenteRelatorio().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuRelatorioActionPerformed
-
-    private void jMenuExConsultaAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoActionPerformed
-       new TelaAtendimentoConsulta().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuExConsultaAtendimentoActionPerformed
-
-    private void jMenuConsultaFuncionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalActionPerformed
-       new Consultar().setVisible(true);
-       
-    }//GEN-LAST:event_jMenuConsultaFuncionalActionPerformed
-
-    private void jMenuConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteActionPerformed
-       new TelaConsultaCliente().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuConsultaClienteActionPerformed
-
-    private void jMenuConsultaProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaActionPerformed
-       new TelaConsultaProblema().setVisible(true);
-       dispose();
-    }//GEN-LAST:event_jMenuConsultaProblemaActionPerformed
-
     private void jMenu3SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3SairActionPerformed
       System.exit(0);
     }//GEN-LAST:event_jMenu3SairActionPerformed
 
     private void jMenuConsultaUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaUsuarioMousePressed
-       new TelaConsultaUsuario().setVisible(true);
-       dispose();
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+            new TelaConsultaUsuario().setVisible(true);
+            dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
     }//GEN-LAST:event_jMenuConsultaUsuarioMousePressed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+     new TelaInicio().setVisible(true);
+     dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuClienteMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaCliente().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
+    }//GEN-LAST:event_jMenuClienteMousePressed
+
+    private void jMenuUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuUsuarioMousePressed
+         String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaUser().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
+    }//GEN-LAST:event_jMenuUsuarioMousePressed
+
+    private void jMenuAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAtendimentoMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaAtendimento().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
+    }//GEN-LAST:event_jMenuAtendimentoMousePressed
+
+    private void jMenuProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuProblemaMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Atendente")){
+           new TelaProblema().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Atendentes!");
+        }
+    }//GEN-LAST:event_jMenuProblemaMousePressed
+
+    private void jMenuEdClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdClienteMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaEditaCliente().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuEdClienteMousePressed
+
+    private void jMenuEdUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaEditaUsuario().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuEdUsuarioMousePressed
+
+    private void jMenuEdAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaAtendimentoEditar().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuEdAtendimentoMousePressed
+
+    private void jMenuEdProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdProblemaMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaEditaProblema().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuEdProblemaMousePressed
+
+    private void jMenuRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente")){
+           new TelaGerenteRelatorio().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
+    }//GEN-LAST:event_jMenuRelatorioMousePressed
+
+    private void jMenuExConsultaAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuExConsultaAtendimentoMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaAtendimentoConsulta().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuExConsultaAtendimentoMousePressed
+
+    private void jMenuConsultaFuncionalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaFuncionalMousePressed
+      new Consultar().setVisible(true);
+    }//GEN-LAST:event_jMenuConsultaFuncionalMousePressed
+
+    private void jMenuConsultaClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaClienteMousePressed
+        String tipodeusuario = Sessao.getInstance().getUsuario().getTipo_de_usuario();
+        if(tipodeusuario.equals("Gerente") || tipodeusuario.equals("Tecnico")){
+           new TelaConsultaCliente().setVisible(true);
+           dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "Apenas Gerentes e Tecnicos!");
+        }
+    }//GEN-LAST:event_jMenuConsultaClienteMousePressed
+
+    private void jMenuConsultaProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuConsultaProblemaMousePressed
+            new TelaConsultaProblema().setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jMenuConsultaProblemaMousePressed
 
     /**
      * @param args the command line arguments
