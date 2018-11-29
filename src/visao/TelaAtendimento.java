@@ -120,9 +120,9 @@ public class TelaAtendimento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setFocusTraversalPolicyProvider(true);
-        setPreferredSize(new java.awt.Dimension(1247, 591));
+        setPreferredSize(new java.awt.Dimension(1050, 550));
         setResizable(false);
-        setSize(new java.awt.Dimension(1247, 591));
+        setSize(new java.awt.Dimension(1050, 550));
         getContentPane().setLayout(null);
 
         idAtendimento.setText("Id do atendimento");

@@ -375,25 +375,41 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuProblemaMousePressed
 
     private void jMenuEdClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdClienteMousePressed
-       new TelaEditaCliente().setVisible(true);
-       dispose();
+       if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaEditaCliente().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdClienteMousePressed
 
     private void jMenuEdUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdUsuarioMousePressed
-       new TelaEditaUsuario().setVisible(true);
-       dispose();
+       if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaEditaUsuario().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdUsuarioMousePressed
 
     private void jMenuEdAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdAtendimentoMousePressed
-       new TelaAtendimentoEditar().setVisible(true);
-       dispose();
+        if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaAtendimentoEditar().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdAtendimentoMousePressed
 
     private void jMenuEdProblemaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEdProblemaMousePressed
-       new TelaEditaProblema().setVisible(true);
-       dispose();
+       if(Sessao.getInstance().getUsuario().getTipo_de_usuario().equals("Gerente")){
+            new TelaEditaProblema().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Apenas Gerentes!");
+        }
     }//GEN-LAST:event_jMenuEdProblemaMousePressed
-
+//FIM DOS MENUS DE EDITAR
     private void jMenuRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMousePressed
        new TelaGerenteRelatorio().setVisible(true);
        dispose();
