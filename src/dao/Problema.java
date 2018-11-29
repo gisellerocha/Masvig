@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Problema {
     private String nome;
     private String descricao;
+    private int id_problema;
     
     public ArrayList<String> lista_id_problema = new ArrayList();
     public ArrayList<String> lista_nome_problema = new ArrayList();
@@ -25,11 +26,11 @@ public class Problema {
     }
 
     public String getDescricao() {
-        return nome;
+        return this.descricao;
     }
     
-    public String setDescricao() {
-        return nome;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
     public String getNome() {
@@ -39,6 +40,17 @@ public class Problema {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public int getId_problema() {
+        return id_problema;
+    }
+
+    public void setId_problema(int id_problema) {
+        this.id_problema = id_problema;
+    }
+    
+    
+    
     
     public boolean inserirProblema(){  
         try{
@@ -47,6 +59,25 @@ public class Problema {
             return true;
         } catch(Exception e){
             return false;
+        }
+    }
+    
+    public boolean atualizarProblema(){  
+        try{
+            ProblemaDAO atualizarProblema = new ProblemaDAO();
+            atualizarProblema.atualizar(this);
+            return true;
+        } catch(Exception e){
+            return false;
+        }
+    }
+    
+    public Problema buscarProblema(Problema problema) {
+        try {
+            ProblemaDAO buscarProblema = new ProblemaDAO();
+            return buscarProblema.buscar(problema);
+        } catch (Exception e) {
+            return null;
         }
     }
     

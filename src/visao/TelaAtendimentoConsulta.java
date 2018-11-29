@@ -111,6 +111,7 @@ public class TelaAtendimentoConsulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chamados");
+        setPreferredSize(new java.awt.Dimension(1247, 591));
         setSize(new java.awt.Dimension(1800, 800));
         getContentPane().setLayout(null);
 

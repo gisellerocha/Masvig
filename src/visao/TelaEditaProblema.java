@@ -38,6 +38,7 @@ public class TelaEditaProblema extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
@@ -61,6 +62,7 @@ public class TelaEditaProblema extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(500, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(500, 500));
         getContentPane().setLayout(null);
@@ -99,6 +101,15 @@ public class TelaEditaProblema extends javax.swing.JFrame {
         jLabel3.setText("ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 20, 140, 20);
+
+        jButton1.setText("BUSCAR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(70, 40, 100, 30);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -255,6 +266,12 @@ public class TelaEditaProblema extends javax.swing.JFrame {
 
     private void jButtonInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInserirMousePressed
         int erro = 0;
+        
+        int id_problema = Integer.parseInt(id.getText());
+        if(id_problema == 0){
+            erro = 50;
+        }
+        
         //verificação do nome
         String nomedoproblema = problemaTextField.getText();
         if(nomedoproblema.length() == 0){
@@ -271,8 +288,12 @@ public class TelaEditaProblema extends javax.swing.JFrame {
         }
         
         if(erro == 0){
-            Problema salvar = new Problema(nomedoproblema, descricao);
-            salvar.inserirProblema();
+            Problema atualizar = new Problema(nomedoproblema, descricao);
+            atualizar.setId_problema(id_problema);
+            
+            if(atualizar.atualizarProblema()){
+                JOptionPane.showMessageDialog(rootPane, "Atualizado com sucesso!");
+            }
         } else if(erro == 1){
             JOptionPane.showMessageDialog(rootPane, "O nome do problema não pode ficar em branco!");
         } else if(erro == 2){
@@ -364,6 +385,19 @@ public class TelaEditaProblema extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jMenu3SairMouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Problema buscar = new Problema(null, null);
+        try {
+            buscar.setId_problema(Integer.parseInt(id.getText()));
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Aceito somente numeros!");
+        }
+        buscar = buscar.buscarProblema(buscar);
+        problemaTextField.setText(buscar.getNome());
+        descricaoTextArea.setText(buscar.getDescricao());
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -406,6 +440,7 @@ public class TelaEditaProblema extends javax.swing.JFrame {
     private javax.swing.JLabel descricaoLabel;
     private javax.swing.JTextArea descricaoTextArea;
     private javax.swing.JTextField id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonInserir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

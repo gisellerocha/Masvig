@@ -56,6 +56,8 @@ public class TelaGerenteRelatorio extends javax.swing.JFrame {
         jMenu3Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1247, 591));
+        setSize(new java.awt.Dimension(1247, 591));
         getContentPane().setLayout(null);
 
         jLabel1.setForeground(new java.awt.Color(0, 102, 51));

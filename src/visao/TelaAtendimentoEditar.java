@@ -84,7 +84,8 @@ public class TelaAtendimentoEditar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar chamado");
         setBackground(new java.awt.Color(255, 255, 255));
-        setSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(1247, 591));
+        setSize(new java.awt.Dimension(1247, 591));
         getContentPane().setLayout(null);
 
         idAtendimento.setText("Id do atendimento");

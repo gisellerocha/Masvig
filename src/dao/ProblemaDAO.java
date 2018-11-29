@@ -36,6 +36,23 @@ public class ProblemaDAO {
         }
     }
     
+    public boolean atualizar(Problema problema) {
+        String insertProblema = "UPDATE problema set tipo_problema=?, descricao=? where id_problema = "+problema.getId_problema();
+        try {
+            ConexaoDAO DAO =  new ConexaoDAO();
+            this.conn = DAO.getConexao();
+            PreparedStatement stm = conn.prepareStatement(insertProblema);
+            stm.setString(1, problema.getNome());
+            stm.setString(2, problema.getDescricao());
+            stm.executeUpdate();
+            stm.close();
+            conn.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar atualizar o problema: " + ex);
+            return false;
+        }
+    }
     public Problema listarTodosOsProblemas(Problema problema){
         String SQL = "";
         SQL = "SELECT * FROM problema";
@@ -56,5 +73,28 @@ public class ProblemaDAO {
             System.out.println("Erro ao tentar listar os problemas: " + ex);
             return null;
         }
+    }
+        
+        
+    public Problema buscar(Problema problema){
+        String SQL = "";
+        SQL = "SELECT * FROM problema where id_problema = " + problema.getId_problema();
+        try {
+            ConexaoDAO DAO =  new ConexaoDAO();
+            this.conn = DAO.getConexao();
+            PreparedStatement stm = conn.prepareStatement(SQL);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                problema.setNome(rs.getString("tipo_problema"));
+                problema.setDescricao(rs.getString("descricao"));
+            }
+            stm.close();
+            conn.close();
+            return problema;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao tentar BUSCAR o problema: " + ex);
+            return null;
+        }
+        
     }
 }
